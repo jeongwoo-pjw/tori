@@ -19,7 +19,8 @@
   const $toTop = document.querySelector('.to-top');
   const $cur = document.querySelector('.chrome__cur');
   const $bar = document.querySelector('.chrome__bar');
-  document.querySelector('.chrome__total').textContent = pad(total);
+  // 표지를 00번으로: 하단 카운터가 각 페이지 아이브로우 번호와 같도록
+  document.querySelector('.chrome__total').textContent = pad(total - 1);
 
   // 하단 각주 메뉴: 번호 없이 주요 페이지만. 디자인①~④와 각 UX 상세는 '디자인' 하나로 묶고, 마무리·끝은 제외
   const $menu = document.querySelector('.chrome__menu');
@@ -55,8 +56,8 @@
     $section.style.visibility = s.classList.contains('slide--hero') ? 'hidden' : '';
     $toTop.classList.toggle('is-visible', i > 0);
     menuLinks.forEach((a) => (a === menuOf[i] ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
-    $cur.textContent = pad(i + 1);
-    $bar.style.width = `${((i + 1) / total) * 100}%`;
+    $cur.textContent = pad(i);
+    $bar.style.width = `${(i / (total - 1)) * 100}%`;
     document.body.classList.toggle('on-dark', s.classList.contains('is-dark'));
   };
   // 화면 중앙선에 걸친 섹션을 현재 섹션으로 (한 화면보다 긴 섹션 대응)
