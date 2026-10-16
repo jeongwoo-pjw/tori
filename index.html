@@ -387,6 +387,7 @@
             <li><span>Voice</span>TTS 낭독</li>
             <li><span>Store</span>Supabase 저장</li>
           </ol>
+          <p class="tech__note">팀 프로젝트의 기술 구성입니다. 개인의 구현 참여 범위는 <a href="#d2d">Design to Development</a>에서 구분해 설명합니다.</p>
         </div>
       </div>
     </section>
@@ -468,21 +469,121 @@
       </div>
     </section>
 
+    <!-- 10 AGE-BASED PERSONALIZATION — 설계 기준 · 생성 로직 -->
+    <section class="slide slide--fit slide--ag" id="age" data-idx="10" data-title="연령별 개인화">
+      <div class="wrap ag">
+
+        <header class="ag__head">
+          <div class="rv">
+            <p class="eyebrow"><span>10</span>Age-based Personalization</p>
+            <h2 class="ag__title">아이의 연령에 따라 달라지는<br />이야기와 독후활동</h2>
+            <p class="ag__sub">그림책 수준 평정기준을 참고해 연령별 생성 조건을 3단계로 구분하고,<br />동화와 독후활동에 공통으로 적용했습니다.</p>
+          </div>
+          <div class="ag__bg rv" style="--d:.1s">
+            <p class="kicker">Design Background</p>
+            <h3>연령별 특성을 생성 조건으로 구체화하다</h3>
+            <p>「초기 문해력 교육을 위한 그림책의 수준 평정기준 개발 연구」를 참고해 8개 범주를 구성하고, 이 기준을 아이의 연령에 따른 동화 및 독후활동 생성 조건으로 구체화했습니다.</p>
+            <ul class="ag__cats" aria-label="생성 조건 8개 범주">
+              <li>텍스트 분량</li><li>어휘</li><li>문장 구조</li><li>서사 구조</li><li>캐릭터 연령</li><li>이해 난도</li><li>활동 형식</li><li>답변 형식</li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- 연령별 생성 기준: 3단계 가로 비교 (행: 동화 생성 / 독후활동) -->
+        <div class="ag__matrix rv" style="--d:.18s">
+          <p class="ag__corner kicker">Criteria</p>
+          <p class="ag__tier"><span class="ag__step">1단계</span><b class="ag__age">2~4<small>세</small></b></p>
+          <p class="ag__tier"><span class="ag__step">2단계</span><b class="ag__age">5~7<small>세</small></b></p>
+          <p class="ag__tier"><span class="ag__step">3단계</span><b class="ag__age">8~9<small>세</small></b></p>
+
+          <p class="ag__row-label"><b>동화 생성</b><span>Story</span></p>
+          <ul class="ag__list"><li>페이지당 1줄 (최대 2줄)</li><li>기본 어휘 및 의성어·의태어 활용</li><li>단순하고 반복적인 서사</li><li>정서적 공감 중심</li></ul>
+          <ul class="ag__list"><li>페이지당 2~3줄</li><li>생활 어휘와 간단한 복문</li><li>기승전결 구조</li><li>또래의 경험을 반영한 이야기</li></ul>
+          <ul class="ag__list"><li>페이지당 3~4줄</li><li>복문 및 심리 묘사</li><li>감정 어휘와 한국 문화 관련 어휘</li><li>내면 성장 및 갈등 중심 서사</li></ul>
+
+          <p class="ag__row-label"><b>독후활동</b><span>Activity</span></p>
+          <ul class="ag__list"><li>예/아니오 및 선택형 질문</li><li>말하기와 그리기 중심</li><li>글쓰기 최소화</li><li>낱말 카드 최대 4개</li></ul>
+          <ul class="ag__list"><li>감정과 이유 설명</li><li>원인·결과를 생각하는 질문</li><li>문장 단위 답변</li><li>그리기와 글쓰기의 조화</li></ul>
+          <ul class="ag__list"><li>근거를 포함한 해석</li><li>감정과 경험의 연결</li><li>논리적 답변</li><li>창의 글쓰기</li></ul>
+        </div>
+
+        <!-- 생성 로직 -->
+        <div class="ag__logic rv" style="--d:.26s">
+          <p class="kicker">Generation Logic</p>
+          <ol class="ag__flow">
+            <li><span class="ag__no">01</span><b>나이 입력</b><span>동화 만들기에서 아이의 나이 입력</span></li>
+            <li><span class="ag__no">02</span><b>연령 단계 분류</b><span>2~4세 · 5~7세 · 8~9세 → 1·2·3단계 <code>getAgeTier(age)</code></span></li>
+            <li><span class="ag__no">03</span><b>단계별 생성 조건 적용</b><span>분량 · 어휘 · 문장 · 서사 조건을 프롬프트에 반영 <code>AgeTierSpec</code></span></li>
+            <li><span class="ag__no">04</span><b>동화 · 독후활동 생성</b><span>같은 단계 기준으로 동화와 활동을 생성</span></li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 11 GENERATION OUTPUT — 연령별 실제 생성 결과 비교 (결과 준비 전: 교체용 자리) -->
+    <section class="slide slide--fit slide--ag" id="output" data-idx="11" data-title="생성 결과 비교">
+      <div class="wrap go">
+
+        <header class="go__head">
+          <div class="rv">
+            <p class="eyebrow"><span>11</span>Generation Output</p>
+            <h2 class="go__title">같은 주제, 연령에 따라 달라지는 결과</h2>
+          </div>
+          <div class="go__side rv" style="--d:.1s">
+            <p class="go__sub">연령별 기준이 실제 출력에 어떻게 반영되는지, 예시 생성된 독후활동(이해력 활동) 연령별 결과를 비교합니다.</p>
+          </div>
+        </header>
+
+        <div class="go__grid rv" style="--d:.18s">
+          <p class="go__corner kicker">Output</p>
+          <p class="go__col"><b>2~4세</b>1단계</p>
+          <p class="go__col"><b>5~7세</b>2단계</p>
+          <p class="go__col"><b>8~9세</b>3단계</p>
+
+          <p class="go__label">생성 화면<small>이해력 활동</small></p>
+          <div class="go__cell"><figure class="go__shot"><img src="images/output-age-2-4.png" alt="2~4세 이해력 활동 — 그림 조각 6개를 드래그해 동화 표지를 완성하는 퍼즐" loading="lazy" /></figure></div>
+          <div class="go__cell"><figure class="go__shot"><img src="images/output-age-5-7.png" alt="5~7세 이해력 활동 — 그림 조각 9개를 맞춰 주인공의 용기 있는 장면을 완성하는 퍼즐" loading="lazy" /></figure></div>
+          <div class="go__cell"><figure class="go__shot"><img src="images/output-age-8-9.png" alt="8~9세 이해력 활동 — 이야기 문장 카드 6장을 순서대로 맞추고, 등장인물의 마음을 글로 쓰는 질문" loading="lazy" /></figure></div>
+
+          <p class="go__label">활동 구성<small>생성된 세부 활동</small></p>
+          <div class="go__cell"><p class="go__txt">큰 그림 조각 6장을 드래그해 동화 표지 장면 완성하기</p></div>
+          <div class="go__cell"><p class="go__txt">더 작게 나눈 조각 9장을 드래그해 이야기 장면 완성하기</p></div>
+          <div class="go__cell"><p class="go__txt">2개 활동: 이야기 순서 맞추기 → 창의적 서술</p></div>
+
+          <p class="go__label">활동 수준<small>정답 난이도</small></p>
+          <div class="go__cell"><ul class="go__txt go__bullets"><li>동화 표지</li><li>정답이 분명해 보자마자 맞출 수 있는 쉬운 난이도</li></ul></div>
+          <div class="go__cell"><ul class="go__txt go__bullets"><li>동화 속 한 장면</li><li>장면을 기억하며 맞춰야 하는 높은 정답 난이도</li></ul></div>
+          <div class="go__cell"><ul class="go__txt go__bullets"><li>삽화보다 문장을 읽고 줄거리를 재구성</li><li>서술형으로 답변</li></ul></div>
+
+          <p class="go__label go__label--span">활동 질문과 의도<small>질문 → 생각의 방향</small></p>
+          <div class="go__cell"><p class="go__qbox">“그림 조각을 맞춰서 오늘 동화를 완성해볼까요?”</p></div>
+          <div class="go__cell"><p class="go__qbox">“민준이의 용기있는 모습을 다시 떠올려볼까요?”</p></div>
+          <div class="go__cell"><p class="go__qbox">“외로운 친구에게 탈을 건네줄 때, 그 친구는 어떤 마음이었을까요?”</p></div>
+
+          <div class="go__cell go__cell--intent"><p class="go__txt">맞추기에 집중한 직관적인 질문</p></div>
+          <div class="go__cell go__cell--intent"><p class="go__txt">장면을 되짚어 ‘용기’를 완성하게 하는 질문</p></div>
+          <div class="go__cell go__cell--intent"><p class="go__txt">줄거리 근거 → 감정 해석, 자신의 경험과 잇는 질문</p></div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- 10 주요 화면 ① — Reading Experience: 입력 · 생성 -->
-    <section class="slide slide--fit" id="s7" data-idx="10" data-title="디자인 ①">
+    <section class="slide slide--fit" id="s7" data-idx="12" data-title="디자인 ①">
       <div class="wrap ks">
         <header class="head">
-          <p class="eyebrow"><span>10</span>Reading Experience — Input &amp; Create</p>
+          <p class="eyebrow"><span>12</span>Reading Experience — Input &amp; Create</p>
           <h2 class="title">이름·주제·소재를 고르면 완성되는 동화</h2>
           <p class="sub">선택형·대화형 입력으로 맞춤 동화 생성</p>
         </header>
         <div class="body cols cols--3 screens ks__screens">
           <figure>
-            <div class="ks__shot"><img src="images/screen-create-input.png" alt="선택형 만들기 화면 — 주인공 이름, 나이, 주제, 한국형 모티브, 그림체, 동화 분량 선택" loading="lazy" /></div>
+            <div class="ks__shot"><img data-fly="create-input" src="images/screen-create-input.png" alt="선택형 만들기 화면 — 주인공 이름, 나이, 주제, 한국형 모티브, 그림체, 동화 분량 선택" loading="lazy" /></div>
             <figcaption><span class="n">01</span><span class="ks__cap"><b>선택형 만들기</b>이름, 나이 등 간단 선택·입력으로 빠른 동화 생성</span></figcaption>
           </figure>
           <figure>
-            <div class="ks__shot"><img src="images/screen-create-chat.png" alt="대화형 만들기 화면 — 주인공·주제·그림체·동화 설정 단계별 대화 입력" loading="lazy" /></div>
+            <div class="ks__shot"><img data-fly="create-chat" src="images/screen-create-chat.png" alt="대화형 만들기 화면 — 주인공·주제·그림체·동화 설정 단계별 대화 입력" loading="lazy" /></div>
             <figcaption><span class="n">02</span><span class="ks__cap"><b>대화형 만들기</b>이름, 주제, 설정 등 심도있는 대화로 나만의 동화 생성</span></figcaption>
           </figure>
           <figure>
@@ -493,19 +594,59 @@
       </div>
     </section>
 
+    <!-- 13 CREATE UX DESIGN — INPUT & CREATE의 이미지가 축소·이동하며 이어짐 -->
+    <section class="slide slide--fit slide--ux" id="create-ux" data-idx="13" data-title="디자인 ① UX" data-pair="s7">
+      <div class="wrap ux">
+        <div class="ux__stage">
+          <div class="ux__canvas" style="--ar: 100 / 80">
+            <figure class="ux__shot" data-fly="create-input" style="--x: 0%; --y: 0%; --w: 60%; --iar: 1124 / 1041">
+              <img src="images/screen-create-input.png" alt="선택형 만들기 화면 — 주인공 이름, 나이, 주제, 한국형 모티브, 그림체 선택" />
+              <span class="ux__tag" style="--td:.35s"><i>01</i>Selectable</span>
+            </figure>
+            <figure class="ux__shot" data-fly="create-chat" style="--x: 44%; --y: 49.3%; --w: 56%; --iar: 1052 / 762">
+              <img src="images/screen-create-chat.png" alt="대화형 만들기 화면 — 주인공·주제·그림체·동화 설정을 단계별 대화로 입력" />
+              <span class="ux__tag" style="--td:.45s"><i>02</i>Conversational</span>
+            </figure>
+          </div>
+        </div>
+        <div class="ux__text">
+          <p class="eyebrow ux-in"><span>13</span>Create UX Design</p>
+          <h2 class="ux__title ux-in" style="--d:.06s">사용자 목적에 따른<br />두 가지 동화 생성 방식</h2>
+          <p class="ux__sub ux-in" style="--d:.12s">빠른 생성을 원하는 사용자와 이야기를 구체화하고 싶은 사용자를 고려해 입력 방식을 구분했습니다.</p>
+          <ol class="ux__points">
+            <li class="ux-in" style="--d:.2s">
+              <p class="ux__point-head"><span class="ux__no">01</span><span class="ux__key">Selectable Input</span></p>
+              <b>선택형 입력으로 간결하게</b>
+              <p>주제와 소재 등 주요 조건을 선택해 빠르게 동화를 만들 수 있도록 구성했습니다.</p>
+            </li>
+            <li class="ux-in" style="--d:.28s">
+              <p class="ux__point-head"><span class="ux__no">02</span><span class="ux__key">Conversational Input</span></p>
+              <b>대화형 입력으로 구체적으로</b>
+              <p>사용자가 이야기의 주인공과 설정을 단계적으로 구체화할 수 있도록 설계했습니다.</p>
+            </li>
+            <li class="ux-in" style="--d:.36s">
+              <p class="ux__point-head"><span class="ux__no">03</span><span class="ux__key">Flexible Creation</span></p>
+              <b>사용자 목적에 맞는 생성 흐름</b>
+              <p>입력 방식은 다르지만 최종적으로 맞춤 동화 생성이라는 동일한 목적에 도달하도록 구성했습니다.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
     <!-- 10 주요 화면 ② — Reading Experience: Story Viewer -->
-    <section class="slide slide--fit slide--rx" id="viewer" data-idx="11" data-title="디자인 ②">
+    <section class="slide slide--fit slide--rx" id="viewer" data-idx="14" data-title="디자인 ②">
       <div class="wrap rx">
 
         <header class="rx__intro rv">
-          <p class="eyebrow"><span>11</span>Reading Experience — Read</p>
+          <p class="eyebrow"><span>14</span>Reading UX Design</p>
           <h2 class="rx__title">아이의 시선이<br />이야기에 머물 수 있도록</h2>
           <p class="rx__desc">읽기 화면의 정보와 기능 최적화</p>
         </header>
 
         <div class="rx__principle rv" style="--d:.12s">
           <p class="kicker">Design Principle</p>
-          <p class="rx__principle-main">읽는 기능보다,<br />이야기에 집중할 수 있는 화면</p>
+          <p class="rx__principle-main">이야기에 집중할 수 있는<br />독서 화면 설계</p>
           <p class="rx__principle-sub">삽화를 화면의 대부분으로 구성하고 본문은 연령별 최대 한도를 지정해 아이의 시선이 여러 정보로 분산되지 않도록 했습니다.</p>
         </div>
 
@@ -516,11 +657,12 @@
           </li>
           <li>
             <p class="rx__feat-head"><span class="rx__no">02</span><span class="rx__key">Age Limit</span><b>아이 맞춤 난이도</b></p>
-            <p>아이의 연령 단계에 맞춰 생성되는 본문 길이와 난이도를 조절했습니다.</p>
+            <p>연령별 생성 기준에 따라 텍스트 분량과 표현 수준을 달리해 읽기 경험을 고려했습니다.</p>
           </li>
           <li>
-            <p class="rx__feat-head"><span class="rx__no">03</span><span class="rx__key">Immersion</span><b>상황에 맞는 몰입</b></p>
-            <p>Bedtime Mode와 Cinema Mode를 통해 읽는 환경에 맞게 화면을 조절하고 이야기에 더욱 집중할 수 있도록 했습니다.</p>
+            <p class="rx__feat-head"><span class="rx__no">03</span><span class="rx__key">Reading Modes</span><b>상황에 맞는 독서 환경</b></p>
+            <p>전체 화면 및 취침 모드 등 독서 상황에 따른 화면 전환을 고려했습니다.</p>
+            <p class="ux__status"><span class="is-done">구현</span><span>취침 모드(다크모드) · 듣기(TTS 재생) · 풀화면으로 보기(전체화면) ·<br />텍스트 편집(본문편집)</span></p>
           </li>
         </ol>
 
@@ -528,37 +670,33 @@
         <div class="rx__stage">
           <figure class="rx__viewer rv" style="--d:.3s">
             <img src="images/story-viewer.png" alt="토리동화 Story Viewer — 민준이의 용기있는 한복 여행. 화면 대부분을 차지하는 수채화 삽화와 3~4줄의 본문, 상단의 좋아요·취침 모드·듣기·풀화면·텍스트 편집 버튼" />
-            <span class="rx__pin" style="--x: 30%; --y: 24%; --pd: .75s">1</span>
-            <span class="rx__pin" style="--x: 61.6%; --y: 49.5%; --pd: .85s">2</span>
-            <span class="rx__pin" style="--x: 74.6%; --y: 9.4%; --pd: .95s">3</span>
-            <span class="rx__pin" style="--x: 84%; --y: 9.4%; --pd: 1.05s">4</span>
+            <span class="ux__area" style="--x: 2.5%; --y: 19.2%; --w: 57.2%; --h: 72%; --td:.8s"></span>
+            <span class="ux__area" style="--x: 62.2%; --y: 43.4%; --w: 31%; --h: 22.6%; --td:.9s"></span>
+            <span class="ux__area" style="--x: 63%; --y: 1.6%; --w: 35.4%; --h: 4.8%; --td:1s"></span>
+            <span class="ux__tag ux__tag--at" style="--x: 2.5%; --y: 19.2%; --td:.85s"><i>01</i>Illustration 70%+</span>
+            <span class="ux__tag ux__tag--at" style="--x: 62.2%; --y: 43.4%; --td:.95s"><i>02</i>Lines Limit</span>
+            <span class="ux__tag ux__tag--at" style="--x: 31%; --y: 3.9%; --td:1.05s"><i>03</i>Reading Modes</span>
           </figure>
-          <ol class="rx__notes rv" style="--d:.7s" aria-label="Viewer 설계 주석">
-            <li><span class="rx__pin-no">1</span><p><b>Illustration 70%+</b>시각적 몰입</p></li>
-            <li><span class="rx__pin-no">2</span><p><b>Lines Limit</b>연령별 길이 조절</p></li>
-            <li><span class="rx__pin-no">3</span><p><b>Read Aloud · Auto Play</b>끊김 없는 감상</p></li>
-            <li><span class="rx__pin-no">4</span><p><b>Bedtime · Cinema</b>몰입 환경 설정</p></li>
-          </ol>
         </div>
 
       </div>
     </section>
 
     <!-- 12 BEYOND READING — ACTIVITY -->
-    <section class="slide slide--fit" id="activity" data-idx="12" data-title="디자인 ③">
+    <section class="slide slide--fit" id="activity" data-idx="16" data-title="디자인 ③">
       <div class="wrap ks ks--activity">
         <header class="head">
-          <p class="eyebrow"><span>12</span>Beyond Reading — Activity</p>
+          <p class="eyebrow"><span>16</span>Beyond Reading — Activity</p>
           <h2 class="title">배움을 잇다, 읽은 뒤엔 놀이로</h2>
           <p class="sub">AI가 자동생성한 다양한 독후활동 놀이</p>
         </header>
         <div class="body cols cols--3 screens ks__screens">
           <figure>
-            <div class="ks__shot ks__shot--inset"><img src="images/activity-tabs.png" alt="독후활동 4종 탭 — 이해력 활동, 감정탐색, 창의력 활동, 어휘활동 카드" loading="lazy" /></div>
+            <div class="ks__shot ks__shot--inset"><img data-fly="activity-tabs" src="images/activity-tabs.png" alt="독후활동 4종 탭 — 이해력 활동, 감정탐색, 창의력 활동, 어휘활동 카드" loading="lazy" /></div>
             <figcaption><span class="n">01</span><span class="ks__cap"><b>독후활동 4종 탭</b>이해력, 감정탐색, 창의력, 어휘 활동으로 나누어 독후 활동 생성</span></figcaption>
           </figure>
           <figure>
-            <div class="ks__shot ks__shot--pad"><img src="images/screen-play.png" alt="참여형 활동 — 동화 장면 조각을 드래그해 그림을 완성하는 퍼즐" loading="lazy" /></div>
+            <div class="ks__shot ks__shot--pad"><img data-fly="activity-play" src="images/screen-play.png" alt="참여형 활동 — 동화 장면 조각을 드래그해 그림을 완성하는 퍼즐" loading="lazy" /></div>
             <figcaption><span class="n">02</span><span class="ks__cap"><b>참여형 활동</b>참여를 유도하고 흥미를 유발하는 독후 활동</span></figcaption>
           </figure>
           <figure>
@@ -569,12 +707,56 @@
       </div>
     </section>
 
+    <!-- 17 ACTIVITY UX DESIGN -->
+    <section class="slide slide--fit slide--ux" id="activity-ux" data-idx="17" data-title="디자인 ③ UX" data-pair="activity">
+      <div class="wrap ux">
+        <div class="ux__stage">
+          <div class="ux__canvas" style="--ar: 100 / 78">
+            <figure class="ux__shot" data-fly="activity-tabs" style="--x: 0%; --y: 0%; --w: 74%; --iar: 891 / 769">
+              <img src="images/activity-tabs.png" alt="독후활동 탭 화면 — 동화 제목 아래 이해력 활동, 감정탐색, 창의력 활동, 어휘활동 4개 카드" />
+              <span class="ux__tag" style="--td:.35s"><i>01</i>4 Activity Tabs</span>
+            </figure>
+            <figure class="ux__shot" data-fly="activity-play" style="--x: 70%; --y: 52%; --w: 30%; --iar: 475 / 593">
+              <img src="images/screen-play.png" alt="참여형 활동 — 동화 장면 조각을 드래그해 그림을 완성하는 퍼즐" />
+              <span class="ux__tag" style="--td:.45s"><i>03</i>Drag &amp; Drop</span>
+            </figure>
+          </div>
+        </div>
+        <div class="ux__text">
+          <p class="eyebrow ux-in"><span>17</span>Activity UX Design</p>
+          <h2 class="ux__title ux-in" style="--d:.06s">읽기에서 표현으로 이어지는<br />독후활동 경험</h2>
+          <p class="ux__sub ux-in" style="--d:.12s">동화의 내용과 아이의 연령을 고려해 질문과 활동 형식을 달리하고, 읽은 이야기를 직접 생각하고 표현하도록 구성했습니다.</p>
+          <ol class="ux__points">
+            <li class="ux-in" style="--d:.2s">
+              <p class="ux__point-head"><span class="ux__no">01</span><span class="ux__key">Reading to Activity</span></p>
+              <b>독서 이후의 자연스러운 연결</b>
+              <p>동화 감상 이후 관련 독후활동으로 이어지는 흐름을 구성했습니다.</p>
+            </li>
+            <li class="ux-in" style="--d:.28s">
+              <p class="ux__point-head"><span class="ux__no">02</span><span class="ux__key">Age-based Activity</span></p>
+              <b>연령별 참여 방식 구분</b>
+              <p>어린 연령은 선택·말하기·그리기를 중심으로, 높은 연령은 이유 설명과 창의적 글쓰기를 중심으로 활동 조건을 구분했습니다.</p>
+            </li>
+            <li class="ux-in" style="--d:.36s">
+              <p class="ux__point-head"><span class="ux__no">03</span><span class="ux__key">Interaction</span></p>
+              <b>직접 참여하는 활동 UI</b>
+              <p>활동의 목적에 따라 선택, 입력, 그리기 등 적절한 조작 방식을 적용했습니다.</p>
+            </li>
+          </ol>
+          <dl class="ux__facts ux-in" style="--d:.44s">
+            <div><dt>서비스 화면</dt><dd>활동 탭 4종 — 이해력 활동 · 감정탐색 · 창의력 활동 · 어휘활동</dd></div>
+            <div><dt>생성 로직</dt><dd>활동 범주 — 이해 확인 · 감정 탐색 · 창의 활동 · 낱말 카드</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <!-- 13 VISUAL SYSTEM — RECORD: Parent Dashboard -->
-    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="13" data-title="디자인 ④">
+    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="18" data-title="디자인 ④">
       <div class="wrap dz">
 
         <header class="dz__intro rv">
-          <p class="eyebrow"><span>13</span>Visual System — Record</p>
+          <p class="eyebrow"><span>18</span>Visual System — Record</p>
           <h2 class="dz__title">아이의 독서 경험을<br />한눈에 들어오는 정보로</h2>
           <p class="dz__desc">생성·활동 데이터 시각적 구성</p>
         </header>
@@ -606,7 +788,7 @@
 
         <!-- 실제 Parent Dashboard: 페이지의 가장 큰 Visual -->
         <div class="dz__stage">
-          <figure class="dz__board rv" style="--d:.3s">
+          <figure class="dz__board rv" style="--d:.3s" data-fly="board">
             <img src="images/screen-parent.png" alt="토리동화 Parent Dashboard — 어휘 성장 추이, 아이 프로필, 자녀별 요약, 반복 요청 테마, 읽은 동화 히스토리, 집중 시간 설정, 감정 반응, 독서 리포트" />
             <span class="dz__zone" data-z="1" style="--x: 70.8%; --y: 12.6%; --w: 25.3%; --h: 27.6%; --pd: 0.7s"><span class="dz__pin"><i>1</i>Profile</span></span>
             <span class="dz__zone" data-z="2" style="--x: 3.1%; --y: 7.6%; --w: 65.2%; --h: 31.4%; --pd: 0.8s"><span class="dz__pin"><i>2</i>Vocabulary</span></span>
@@ -619,11 +801,144 @@
       </div>
     </section>
 
+    <!-- 19 DASHBOARD UX DESIGN -->
+    <section class="slide slide--fit slide--ux slide--ux-alt" id="dashboard-ux" data-idx="19" data-title="디자인 ④ UX" data-pair="dashboard">
+      <div class="wrap ux">
+        <div class="ux__stage">
+          <div class="ux__canvas" style="--ar: 1254 / 1197">
+            <figure class="ux__shot" data-fly="board" style="--x: 0%; --y: 0%; --w: 100%; --iar: 1254 / 1197">
+              <img src="images/screen-parent.png" alt="토리동화 Parent Dashboard — 어휘 성장 추이, 아이 프로필, 감정 반응, 읽은 동화 히스토리, 독후활동 기록" />
+              <span class="ux__area is-primary" style="--x: 3.1%; --y: 7.6%; --w: 65.2%; --h: 31.4%; --td:.25s"></span>
+              <span class="ux__area is-primary" style="--x: 70.8%; --y: 12.6%; --w: 25.3%; --h: 27.6%; --td:.3s"></span>
+              <span class="ux__area is-primary" style="--x: 37%; --y: 71.6%; --w: 30.2%; --h: 25.6%; --td:.35s"></span>
+              <span class="ux__area is-secondary" style="--x: 70.8%; --y: 40.6%; --w: 25.3%; --h: 56.7%; --td:.45s"></span>
+              <span class="ux__area is-secondary" style="--x: 37%; --y: 40.7%; --w: 30.2%; --h: 29.1%; --td:.55s"></span>
+              <span class="ux__area is-secondary" style="--x: 3.1%; --y: 40.7%; --w: 32.5%; --h: 29.1%; --td:.5s"></span>
+              <span class="ux__tag ux__tag--at is-primary" style="--x: 3.1%; --y: 7.6%; --td:.3s">Primary · 어휘 성장</span>
+              <span class="ux__tag ux__tag--at is-primary" style="--x: 70.8%; --y: 12.6%; --td:.35s">Primary · 프로필</span>
+              <span class="ux__tag ux__tag--at is-primary" style="--x: 37%; --y: 71.6%; --td:.4s">Primary · 감정 패턴</span>
+              <span class="ux__tag ux__tag--at is-secondary" style="--x: 70.8%; --y: 39.8%; --td:.5s">Secondary · 독서 히스토리</span>
+              <span class="ux__tag ux__tag--at is-secondary" style="--x: 3.1%; --y: 40.7%; --td:.55s">Secondary · 활동 기록</span>
+              <span class="ux__tag ux__tag--at is-secondary" style="--x: 37%; --y: 40.7%; --td:.6s">Secondary · 동화 생성 히스토리</span>
+            </figure>
+          </div>
+        </div>
+        <div class="ux__text">
+          <p class="eyebrow ux-in"><span>19</span>Dashboard UX Design</p>
+          <h2 class="ux__title ux-in" style="--d:.06s">정보 우선순위에 따른<br />부모 대시보드 설계</h2>
+          <p class="ux__sub ux-in" style="--d:.12s">부모가 아이의 성장 정보와 독서 활동을 구분해 확인할 수 있도록 정보의 중요도에 따라 화면 위계를 구성했습니다.</p>
+          <ol class="ux__points ux__points--tier">
+            <li class="ux-in is-primary" style="--d:.2s">
+              <p class="ux__point-head"><span class="ux__swatch"></span><span class="ux__key">Primary Information</span></p>
+              <b>주요 성장 정보</b>
+              <p>아이 프로필과 어휘 성장, 감정 패턴 등 주요 정보를 우선적으로 확인할 수 있도록 배치했습니다.</p>
+            </li>
+            <li class="ux-in is-secondary" style="--d:.28s">
+              <p class="ux__point-head"><span class="ux__swatch"></span><span class="ux__key">Secondary Information</span></p>
+              <b>독서 및 활동 기록</b>
+              <p>독서 히스토리와 독후활동 기록은 주요 성장 정보를 보조하는 영역으로 구성했습니다.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 20 DESIGN TO DEVELOPMENT -->
+    <section class="slide slide--fit slide--dd" id="d2d" data-idx="20" data-title="구현 과정">
+      <div class="wrap dd">
+
+        <header class="dd__head">
+          <div class="rv">
+            <p class="eyebrow"><span>20</span>Design to Development</p>
+            <h2 class="dd__title">AI를 활용해 디자인을<br />실제 서비스로 연결하다</h2>
+          </div>
+          <p class="dd__sub rv" style="--d:.1s">연령별 동화·독후활동 생성 조건과 프롬프트를 설계하고, AI 생성 코드를 활용한 기능 연결과 결과 확인을 통해 실제 서비스 구현에 참여했습니다.</p>
+        </header>
+
+        <div class="dd__process rv" style="--d:.16s">
+          <p class="kicker">Development Process</p>
+          <ol class="dd__steps">
+            <li><span class="dd__no">01</span><b>UX/UI Design</b><span class="dd__tool">Figma</span><p>전체 화면 및 사용자 흐름 설계</p></li>
+            <li><span class="dd__no">02</span><b>AI-assisted Coding</b><span class="dd__tool">Claude · VS Code</span><p>AI를 활용한 코드 생성·수정</p></li>
+            <li><span class="dd__no">03</span><b>Function Integration</b><span class="dd__tool">Supabase · API</span><p>AI 생성 코드를 활용한 기능 연결·동작 확인</p></li>
+            <li><span class="dd__no">04</span><b>Live Service</b><span class="dd__tool">GitHub Pages</span><p>팀 서비스 구현 결과 확인</p></li>
+          </ol>
+        </div>
+
+        <div class="dd__role">
+          <div class="dd__role-main rv" style="--d:.1s">
+            <p class="kicker">My Implementation Role</p>
+            <h3>생성 조건을 실제 기능으로 연결하다</h3>
+            <p>연령별 동화·독후활동 생성 조건과 프롬프트를 설계하고, AI가 생성한 코드를 활용해 기능 연결과 출력 결과 확인에 참여했습니다.</p>
+            <p class="dd__note">React · TypeScript · Vite · Tailwind CSS는 팀 프로젝트의 구현 환경입니다. 코드를 직접 숙련된 수준으로 작성하기보다, AI 생성 코드를 활용해 기능을 연결하고 결과를 확인하는 방식으로 참여했습니다.</p>
+          </div>
+          <div class="dd__scope rv" style="--d:.18s">
+            <p class="dd__scope-title">실제 참여 범위</p>
+            <ul>
+              <li><span>설계</span>연령별 동화 생성 조건 정의</li>
+              <li><span>설계</span>연령별 독후활동 생성 조건 정의</li>
+              <li><span>설계</span>프롬프트 작성 및 조정</li>
+              <li><span>구현 참여</span>AI 생성 코드 활용</li>
+              <li><span>구현 참여</span>API · Supabase 연계 작업 참여</li>
+              <li><span>검증</span>생성 결과 확인 및 수정</li>
+              <li><span>디자인</span>전체 UX/UI 디자인 및 개선</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 21 DESIGN REFINEMENT — 생성 대기 화면 개선 -->
+    <section class="slide slide--fit slide--rf" id="refine" data-idx="21" data-title="디자인 개선">
+      <div class="wrap rf">
+
+        <header class="rf__head">
+          <div class="rv">
+            <p class="eyebrow"><span>21</span>Design Refinement</p>
+            <h2 class="rf__title">생성 대기 과정의<br />상태 피드백 개선</h2>
+          </div>
+          <p class="rf__sub rv" style="--d:.1s">동화 생성에 시간이 소요되는 점을 고려하여, 정적인 로딩 화면을 시각적인 단계별 상태 안내 화면으로 개선했습니다. 사용자가 현재 진행 중인 작업을 파악할 수 있도록 시스템 상태의 가시성을 높이는 방향으로 설계했습니다.</p>
+        </header>
+
+        <div class="rf__compare">
+          <figure class="rf__case rv" style="--d:.16s">
+            <figcaption><span class="rf__label">Before</span><b>정적인 로딩 화면</b></figcaption>
+            <div class="rf__shot">
+              <div class="rf__frame" style="--iar: 1103 / 1076">
+                <img src="images/refine-before.png" alt="개선 전 로딩 화면 — 스피너와 '이야기 쓰는 중' 문구, 모든 단계가 같은 상태로 나열된 목록" loading="lazy" />
+              </div>
+            </div>
+            <p class="rf__desc"><span>Problem</span>현재 진행 중인 작업을 파악하기 어려움</p>
+          </figure>
+          <span class="rf__arrow" aria-hidden="true"></span>
+          <figure class="rf__case rf__case--after rv" style="--d:.26s">
+            <figcaption><span class="rf__label">After</span><b>단계별 진행 상태 안내</b></figcaption>
+            <div class="rf__shot">
+              <div class="rf__frame" style="--iar: 1103 / 1154">
+                <img src="images/screen-create-loading.png" alt="개선 후 생성 대기 화면 — 진행 퍼센트와 완료·진행중·대기 단계 표시, 점점 완성되는 삽화, 안전 필터 결과" loading="lazy" />
+                <span class="rf__zone" style="--x: 33.5%; --y: 7.6%; --w: 33%; --h: 15.6%; --pd: .6s"></span>
+                <span class="rf__zone" style="--x: 9.2%; --y: 24.4%; --w: 81.8%; --h: 49.4%; --pd: .75s"></span>
+                <span class="rf__zone" style="--x: 9.2%; --y: 75.8%; --w: 81.8%; --h: 17.2%; --pd: .9s"></span>
+                <span class="rf__tag" style="--x: 33.5%; --y: 7.6%; --pd: .65s"><i>1</i>단계별 상태 표시</span>
+                <span class="rf__tag" style="--x: 9.2%; --y: 24.4%; --pd: .8s"><i>2</i>삽화 완성도 변화</span>
+                <span class="rf__tag" style="--x: 9.2%; --y: 75.8%; --pd: .95s"><i>3</i>안전 필터 체크</span>
+              </div>
+            </div>
+            <p class="rf__desc"><span>Improvement</span>생성 단계별 안내 정보를 제공하도록 개선</p>
+          </figure>
+        </div>
+
+        <p class="rf__foot rv" style="--d:.3s">* 단계 안내는 생성 흐름을 순서대로 보여주는 화면으로, 서버의 실시간 진행률과 연동된 수치는 아닙니다.</p>
+
+      </div>
+    </section>
+
     <!-- 11 BM 구조 -->
-    <section class="slide" id="s11" data-idx="14" data-title="BM 구조">
+    <section class="slide" id="s11" data-idx="22" data-title="BM 구조">
       <div class="wrap">
         <header class="head">
-          <p class="eyebrow"><span>14</span>Business Model — BM 구조</p>
+          <p class="eyebrow"><span>22</span>Business Model — BM 구조</p>
           <h2 class="title">프리미엄 구독 모델</h2>
           <p class="sub">필요한 만큼, 더 깊게</p>
         </header>
@@ -654,10 +969,10 @@
     </section>
 
     <!-- 12 향후 계획 -->
-    <section class="slide" id="s12" data-idx="15" data-title="향후 계획">
+    <section class="slide" id="s12" data-idx="23" data-title="향후 계획">
       <div class="wrap">
         <header class="head">
-          <p class="eyebrow"><span>15</span>Roadmap — 향후 계획</p>
+          <p class="eyebrow"><span>23</span>Roadmap — 향후 계획</p>
           <h2 class="title">단기 고도화에서 글로벌 확장까지</h2>
           <p class="sub">1차 MVP 이후 로드맵</p>
         </header>
@@ -682,16 +997,16 @@
     </section>
 
     <!-- 16 LEARNED -->
-    <section class="slide slide--fit slide--lr" id="learned" data-idx="16" data-title="마무리">
+    <section class="slide slide--fit slide--lr" id="learned" data-idx="24" data-title="마무리">
       <div class="wrap lr">
 
         <header class="lr__head">
           <div class="rv">
-            <p class="eyebrow"><span>16</span>Learned</p>
+            <p class="eyebrow"><span>24</span>Learned</p>
             <p class="kicker lr__small">What I learned</p>
             <h2 class="lr__title">디자인에서 끝내지 않고,<br />실제로 작동하는 서비스까지</h2>
           </div>
-          <p class="lr__desc rv" style="--d:.1s">토리동화는 기획부터 UI 디자인, AI를 활용한 구현과 배포까지 서비스가 실제로 만들어지는 과정을 경험한 프로젝트입니다. 직접 구현하는 과정에서 디자인 단계에서는 보이지 않았던 제약과 가능성을 이해하고, 디자인과 개발이 어떻게 연결되는지 배울 수 있었습니다.</p>
+          <p class="lr__desc rv" style="--d:.1s">토리동화는 기획부터 UI 디자인, AI를 활용한 구현 참여와 배포까지 서비스가 실제로 만들어지는 과정을 경험한 프로젝트입니다. AI 생성 코드로 기능을 연결하고 결과를 확인하는 과정에서 디자인 단계에서는 보이지 않았던 제약과 가능성을 이해하고, 디자인과 개발이 어떻게 연결되는지 배울 수 있었습니다.</p>
         </header>
 
         <ol class="lr__learnings">
@@ -702,8 +1017,8 @@
           </li>
           <li class="rv" style="--d:.26s">
             <p class="lr__meta"><span class="lr__no">02</span><span class="lr__key">Design → Development</span></p>
-            <h3>디자인을<br />실제 서비스로 구현하기</h3>
-            <p>Figma에서 설계한 화면을 Claude와 VS Code로 직접 구현하며, 반응형 레이아웃과 인터랙션, 데이터 연결까지 고려해 디자인과 개발 사이의 간극을 이해할 수 있었습니다.</p>
+            <h3>디자인을<br />실제 서비스로 연결하기</h3>
+            <p>Figma에서 설계한 화면과 연령별 생성 조건을 Claude·VS Code로 만든 코드에 연결하며, 반응형 레이아웃과 인터랙션, 데이터 연결에서 생기는 제약을 확인하고 디자인을 조정하는 과정을 경험했습니다.</p>
           </li>
           <li class="rv" style="--d:.34s">
             <p class="lr__meta"><span class="lr__no">03</span><span class="lr__key">Collaboration</span></p>
@@ -719,7 +1034,7 @@
               <li><p><b>Planning</b><span>서비스 구조</span></p></li>
               <li><p><b>UX/UI Design</b><span>사용자 경험 · UI</span></p></li>
               <li><p><b>Vibe Coding</b><span>Claude · VS Code</span></p></li>
-              <li><p><b>Implementation</b><span>React · TypeScript</span></p></li>
+              <li><p><b>Integration</b><span>Supabase · API</span></p></li>
               <li><p><b>Deployment</b><span>GitHub Pages</span></p></li>
             </ol>
           </div>
@@ -735,7 +1050,7 @@
     </section>
 
     <!-- 14 THANK YOU -->
-    <section class="slide slide--end is-dark" id="s14" data-idx="17" data-title="끝">
+    <section class="slide slide--end is-dark" id="s14" data-idx="25" data-title="끝">
       <div class="wrap end">
         <p class="end__eyebrow">상상이 이야기가 되는 곳</p>
         <h2 class="end__title">Thank you</h2>

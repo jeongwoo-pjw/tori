@@ -4,6 +4,14 @@
   const pad = (n) => String(n).padStart(2, '0');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // 페이지 번호: 실제 순서대로 자동 정렬 (표지 제외) — 섹션 추가·이동 시 번호를 손으로 고치지 않도록
+  slides.forEach((s, i) => {
+    if (i === 0) return;
+    s.dataset.idx = pad(i);
+    const num = s.querySelector('.eyebrow > span:first-child');
+    if (num) num.textContent = pad(i);
+  });
+
   // 고정 크롬: 현재 섹션 · 페이지 · 진행 바
   const $idx = document.querySelector('.chrome__idx');
   const $title = document.querySelector('.chrome__title');
@@ -13,7 +21,7 @@
   const $bar = document.querySelector('.chrome__bar');
   document.querySelector('.chrome__total').textContent = pad(total);
 
-  // 하단 각주 메뉴: 번호 없이 주요 페이지만. 디자인1~4는 '디자인' 하나로 묶고, 마무리·끝은 제외
+  // 하단 각주 메뉴: 번호 없이 주요 페이지만. 디자인①~④와 각 UX 상세는 '디자인' 하나로 묶고, 마무리·끝은 제외
   const $menu = document.querySelector('.chrome__menu');
   const EXCLUDE = ['마무리', '끝'];
   const menuLinks = [];     // [a 요소]
@@ -22,13 +30,13 @@
   slides.forEach((slide, i) => {
     const title = slide.dataset.title;
     if (!title || EXCLUDE.includes(title)) return;
-    if (/^디자인\s?[①-④\d]$/.test(title)) {
+    if (/^디자인\s?[①-④\d]/.test(title)) {
       if (designLink) { menuOf[i] = designLink; return; }
     }
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.href = `#${slide.id}`;
-    a.textContent = /^디자인\s?[①-④\d]$/.test(title) ? '디자인' : title;
+    a.textContent = /^디자인\s?[①-④\d]/.test(title) ? '디자인' : title;
     a.addEventListener('click', (e) => { e.preventDefault(); slide.scrollIntoView({ behavior: 'smooth' }); a.blur(); });
     li.appendChild(a);
     $menu.appendChild(li);
@@ -138,4 +146,71 @@
     { threshold: 0.12 }
   );
   targets.forEach((el) => revealIO.observe(el));
+
+  // SHOWCASE → UX DESIGN DETAIL
+  // 상세 페이지의 실제 이미지(.ux__shot)를 쇼케이스 이미지 위치에서 출발시켜, 스크롤 진행도에 맞춰
+  // 상세 페이지의 자리로 축소·이동 (FLIP). 쇼케이스 원본은 전환 중에만 숨겨 하나의 이미지가 움직이는 것처럼 보임
+  // 스냅이 켜지는 데스크톱에서만 동작하고, 그 외 환경과 모션 최소화 설정에서는 완성 상태를 바로 표시
+  const flightMQ = window.matchMedia('(min-width: 1024px) and (min-height: 700px)');
+  const pairs = [...document.querySelectorAll('.slide--ux[data-pair]')].map((detail) => {
+    const show = document.getElementById(detail.dataset.pair);
+    const fliers = [...detail.querySelectorAll('.ux__shot[data-fly]')]
+      .map((el) => ({ el, src: show.querySelector(`[data-fly="${el.dataset.fly}"]`) }))
+      .filter((f) => f.src);
+    return { detail, show, wrap: show.querySelector(':scope > .wrap'), fliers, flying: false };
+  });
+  // transform의 영향을 받지 않는 레이아웃 좌표 (슬라이드 기준)
+  const relRect = (el, slide) => {
+    let x = 0, y = 0;
+    for (let n = el; n && n !== slide; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop; }
+    return { x, y, w: el.offsetWidth };
+  };
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const land = (pr) => {
+    if (!pr.flying) return;
+    pr.flying = false;
+    pr.fliers.forEach(({ el, src }) => { el.style.transform = ''; el.classList.remove('is-flying'); src.style.visibility = ''; });
+    pr.wrap.style.opacity = '';
+  };
+  const updateFlight = () => {
+    const on = flightMQ.matches && !reduceMotion.matches;
+    pairs.forEach((pr) => {
+      const { detail, show } = pr;
+      if (!on) { land(pr); detail.classList.add('is-on', 'is-settled'); return; }
+      const H = show.offsetHeight;
+      const T = detail.getBoundingClientRect().top;
+      // 스냅 위치의 소수점 오차(1px 이내)는 완료 상태로 간주
+      const p = T <= 1 ? 1 : T >= H - 1 ? 0 : 1 - T / H;
+      if (p <= 0 || p >= 1) land(pr);
+      else {
+        pr.flying = true;
+        const e = ease(p);
+        pr.wrap.style.opacity = String(Math.max(0, 1 - p * 1.8));
+        pr.fliers.forEach(({ el, src }) => {
+          const s = relRect(src, show);
+          const d = relRect(el, detail);
+          if (!s.w || !d.w) return;
+          // 쇼케이스가 화면 상단에 있을 때의 위치(s) → 상세가 화면 상단에 있을 때의 위치(d)
+          const x = s.x + (d.x - s.x) * e;
+          const y = s.y + (d.y - s.y) * e;
+          const w = s.w + (d.w - s.w) * e;
+          el.style.transform = `translate(${(x - d.x).toFixed(2)}px, ${(y - T - d.y).toFixed(2)}px) scale(${(w / d.w).toFixed(4)})`;
+          el.classList.add('is-flying');
+          src.style.visibility = 'hidden';
+        });
+      }
+      // 설명은 전환 후반부터 순차 등장, 콜아웃은 이미지가 자리 잡은 뒤 — 역방향이면 다시 사라짐
+      if (p > 0.55) detail.classList.add('is-on');
+      else if (p < 0.4) detail.classList.remove('is-on');
+      detail.classList.toggle('is-settled', p > 0.97);
+    });
+  };
+  let flightTick = false;
+  const requestFlight = () => { if (!flightTick) { flightTick = true; requestAnimationFrame(() => { flightTick = false; updateFlight(); }); } };
+  window.addEventListener('scroll', requestFlight, { passive: true });
+  window.addEventListener('resize', requestFlight);
+  window.addEventListener('load', requestFlight);
+  flightMQ.addEventListener('change', requestFlight);
+  reduceMotion.addEventListener('change', requestFlight);
+  updateFlight();
 })();
