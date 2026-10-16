@@ -475,66 +475,44 @@
       </div>
     </section>
 
-    <!-- 06 핵심 기능 -->
-    <section class="slide" id="s6" data-idx="09" data-title="핵심기능(MVP)">
-      <div class="wrap">
-        <header class="head">
-          <p class="eyebrow"><span>09</span>Core Features — 핵심 기능 (MVP)</p>
-          <h2 class="title">한국 문화 동화 생성 · 부모 대시보드 · 놀이마당</h2>
-          <p class="sub">토리동화를 움직이는 세 가지 축</p>
-        </header>
-        <ol class="body cols cols--3 features">
-          <li>
-            <span class="big-n">01</span>
-            <h3>한국 문화 동화책 생성</h3>
-            <p>이름·나이·한국 소재를 입력하면 AI가 스토리·삽화·TTS 낭독까지 자동 생성해 세상에 하나뿐인 동화책을 완성합니다.</p>
-          </li>
-          <li>
-            <span class="big-n">02</span>
-            <h3>부모의 대시보드 관리</h3>
-            <p>아이의 독서 히스토리·감정 패턴·어휘 성장을 한눈에 확인하고, 부모가 독서 경험을 직접 관리합니다.</p>
-          </li>
-          <li>
-            <span class="big-n">03</span>
-            <h3>놀이마당</h3>
-            <p>동화를 읽은 후 이해력·감정·어휘를 게임처럼 즐기며 배우는 독후활동 공간으로, 독서가 배움으로 이어집니다.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
     <!-- 06 VISUAL DESIGN SYSTEM (기존 NAMING 위치) -->
-    <section class="slide slide--fit slide--vs" id="s5" data-idx="10" data-title="디자인 시스템">
+    <section class="slide slide--fit slide--vs" id="s5" data-idx="09" data-title="디자인 시스템">
       <div class="wrap vs">
 
         <header class="vs__head">
           <div class="rv">
-            <p class="eyebrow"><span>10</span>Visual Design System</p>
+            <p class="eyebrow"><span>09</span>Visual Design System</p>
             <h2 class="vs__title">아이의 상상력과 부모의 신뢰를<br />연결하는 디자인</h2>
           </div>
-          <p class="vs__desc rv" style="--d:.1s">부드러운 형태와 다채로운 컬러를 활용해 아이에게는 친근하고 부모에게는 편안한 시각적 균형을 설계했습니다.</p>
+          <p class="vs__desc rv" style="--d:.1s">다채로운 컬러와 부드러운 형태로 아이와 부모 모두를 위한 시각적 균형을 설계했습니다.</p>
         </header>
 
         <!-- BRAND IDENTITY: 네이밍 + 컬러 테마 -->
         <section class="vs__identity rv" style="--d:.12s">
-          <div class="vs__brand">
+          <div class="vs__brand-head">
             <p class="kicker">Brand Identity</p>
             <h3>TORI — 이야기의 씨앗</h3>
-            <p>아이의 상상과 가능성을 키워가는 이야기.</p>
-            <svg class="vs__sprout" viewBox="0 0 64 64" aria-hidden="true">
-              <path d="M32 58V30" />
-              <path d="M32 34c0-9-7-15-18-15 0 9 7 15 18 15z" />
-              <path d="M32 30c0-10 8-17 20-17 0 10-8 17-20 17z" />
-            </svg>
           </div>
-          <div class="vs__theme">
+          <div class="vs__theme-top">
             <p class="vs__theme-head"><b>Color Theme System</b>사용자 취향에 따라 변화하는 인터페이스</p>
             <p class="vs__theme-desc">사용자가 선택한 컬러 테마에 따라 서비스 전반의 주요 UI 요소가 일관되게 변경되도록 설계했습니다.</p>
+          </div>
+          <div class="vs__brand-boxes">
+            <div class="vs__brand-box vs__brand-box--icon">
+              <svg class="vs__sprout" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M32 58V30" />
+                <path d="M32 34c0-9-7-15-18-15 0 9 7 15 18 15z" />
+                <path d="M32 30c0-10 8-17 20-17 0 10-8 17-20 17z" />
+              </svg>
+            </div>
+            <p class="vs__brand-box">아이의 상상과 가능성을 키워가는 이야기</p>
+          </div>
+          <div class="vs__theme-body">
             <ul class="vs__swatches">
-              <li class="vs__chip" style="--c:#FF6B9D; --t:#fff"><b>Pink</b><span>#FF6B9D</span></li>
-              <li class="vs__chip" style="--c:#7ECEC4"><b>Mint</b><span>#7ECEC4</span></li>
-              <li class="vs__chip" style="--c:#FFD93D"><b>Yellow</b><span>#FFD93D</span></li>
-              <li class="vs__chip" style="--c:#C9B1FF"><b>Lavender</b><span>#C9B1FF</span></li>
+              <li class="vs__chip is-default" style="--c:#F4A8BC"><b>핑크베리</b><span>#F4A8BC</span></li>
+              <li class="vs__chip" style="--c:#BFECE9"><b>새벽민트</b><span>#BFECE9</span></li>
+              <li class="vs__chip" style="--c:#FFE4A5"><b>황금노을</b><span>#FFE4A5</span></li>
+              <li class="vs__chip" style="--c:#C9DAFF"><b>달빛별</b><span>#C9DAFF</span></li>
             </ul>
             <p class="vs__apply"><b>Theme Application</b>Primary Button · Selected State · Interactive Elements</p>
           </div>
@@ -582,6 +560,34 @@
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- 06 핵심 기능 -->
+    <section class="slide" id="s6" data-idx="10" data-title="핵심기능(MVP)">
+      <div class="wrap">
+        <header class="head">
+          <p class="eyebrow"><span>10</span>Core Features — 핵심 기능 (MVP)</p>
+          <h2 class="title">한국 문화 동화 생성 · 부모 대시보드 · 놀이마당</h2>
+          <p class="sub">토리동화를 움직이는 세 가지 축</p>
+        </header>
+        <ol class="body cols cols--3 features">
+          <li>
+            <span class="big-n">01</span>
+            <h3>한국 문화 동화책 생성</h3>
+            <p>이름·나이·한국 소재를 입력하면 AI가 스토리·삽화·TTS 낭독까지 자동 생성해 세상에 하나뿐인 동화책을 완성합니다.</p>
+          </li>
+          <li>
+            <span class="big-n">02</span>
+            <h3>부모의 대시보드 관리</h3>
+            <p>아이의 독서 히스토리·감정 패턴·어휘 성장을 한눈에 확인하고, 부모가 독서 경험을 직접 관리합니다.</p>
+          </li>
+          <li>
+            <span class="big-n">03</span>
+            <h3>놀이마당</h3>
+            <p>동화를 읽은 후 이해력·감정·어휘를 게임처럼 즐기며 배우는 독후활동 공간으로, 독서가 배움으로 이어집니다.</p>
+          </li>
+        </ol>
       </div>
     </section>
 

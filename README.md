@@ -57,8 +57,8 @@
 | 06 | Service Concept | 서비스 컨셉 | INPUT → CREATE → READ → ACTIVITY → RECORD |
 | 07 | Age-based Personalization | 연령별 개인화 | 그림책 수준 평정기준 기반 3단계 생성 기준표, 생성 로직 |
 | 08 | Generation Output | 생성 결과 비교 | 연령별 이해력 활동 결과 3단 비교 (활동 구성 · 활동 수준 · 질문과 의도) |
-| 09 | Core Features | 핵심기능(MVP) | 동화 생성 · 부모 대시보드 · 놀이마당 |
-| 10 | Visual Design System | 디자인 시스템 | Brand Identity(네이밍 + 컬러 테마) · Typography · UI Components |
+| 09 | Visual Design System | 디자인 시스템 | Brand Identity(네이밍 + 서비스 컬러 테마 4종) · Typography · UI Components |
+| 10 | Core Features | 핵심기능(MVP) | 동화 생성 · 부모 대시보드 · 놀이마당 |
 | 11 | Input & Create | 디자인 ① | 선택형 · 대화형 입력, 생성 중 화면 (쇼케이스) |
 | 12 | Create UX Design | 디자인 ① UX | 쇼케이스 이미지가 축소·이동하며 3가지 설계 포인트 |
 | 13 | Reading UX Design | 디자인 ② | Story Viewer + 이미지 내 콜아웃, 구현 기능 표기 |
@@ -225,3 +225,10 @@ python -m http.server 5500 --bind 127.0.0.1
 **검수**
 - Playwright 헤드리스로 1024×768 ~ 1920×1080 해상도에서 각 페이지가 상하단 크롬과 겹치는지 측정하며 조정
 - 기존 Read · Record · Learned 페이지의 1280×720 이하 겹침은 원본에도 있던 값 (Read는 통합 과정에서 해결)
+
+**Visual Design System 다듬기**
+- 컬러 테마를 서비스 테마 피커(`TopNav.tsx`)의 실제 이름 · 대표색으로 교체: 핑크베리 #F4A8BC · 새벽민트 #BFECE9 · 황금노을 #FFE4A5 · 달빛별 #C9DAFF
+- 기본 테마(핑크베리)만 바깥 스트로크로 강조, 칩 안 이름 · HEX는 굵기와 크기를 한 단계 낮춤
+- 새싹 아이콘과 네이밍 설명을 나란한 박스로 묶고, 박스 높이를 컬러칩 ~ Theme Application 영역과 같게 맞춤 (Grid 행 공유)
+- Typography 항목 사이 구분선 제거, 설명 문구 수정
+- Core Features(10)와 Visual Design System(09) 순서 교체
