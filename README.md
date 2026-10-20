@@ -18,8 +18,9 @@
 발표 자료의 톤에서 벗어나 **UX/UI Case Study** 형식으로 다시 설계했습니다.
 
 - 각 섹션은 한 화면(100vh) 단위로 넘어가는 슬라이드 구조
-- 한국적인 동화의 감성(한지 · 먹 · 주홍)과 현대적인 AI 서비스의 느낌을 함께 담은 에디토리얼 레이아웃
+- 로지 아이보리 배경과 서비스 기본 테마인 핑크베리 포인트 컬러를 사용한 에디토리얼 레이아웃
 - 카드 · 박스 · 그림자를 최소화하고, 얇은 구분선과 여백으로 정보 위계를 구성
+- 문제 발견 → 문제 정의 → 핵심가치 → 전략 분석 → 기능 우선순위 → UX/UI 설계·구현 → 운영·확장 검토 흐름으로 구성하고, 상단 6단계 프로세스 인디케이터로 현재 위치를 표시
 
 ## 기술 구성
 
@@ -29,54 +30,70 @@
 |---|---|
 | Markup | HTML (`index.html` 한 파일에 전체 섹션) |
 | Style | CSS (`css/style.css`) — CSS 변수 기반 타입 스케일, Grid · Subgrid · Container Query |
-| Script | Vanilla JS (`js/main.js`) — IntersectionObserver 기반 진행 표시 · 등장 효과 · 스크롤 연동 이미지 전환(FLIP) |
+| Script | Vanilla JS (`js/main.js`) — IntersectionObserver 기반 진행 표시 · 프로세스 단계 표시 · 등장 효과 · 스크롤 연동 이미지 전환(FLIP) |
 | Font | Pretendard, Noto Serif KR, Cormorant Garamond (디자인 시스템 페이지 샘플: Gowun Batang · NanumSquareRound · Gowun Dodum) |
 | Deploy | GitHub Pages (`main` 브랜치 / root) |
 
 ```
 .
-├── index.html        # 전체 페이지 (25개 섹션, 표지 00 ~ 끝 24)
+├── index.html        # 전체 페이지 (31개 화면, 표지 00 ~ 끝 30)
 ├── css/style.css     # 디자인 시스템 · 섹션별 스타일 · 반응형
-├── js/main.js        # 페이지 번호 자동 정렬 · 내비게이션 · 등장 효과 · 쇼케이스→상세 전환 · 히어로 아치 배치
+├── js/main.js        # 페이지 번호 자동 정렬 · 내비게이션 · 프로세스 인디케이터 · 등장 효과 · 쇼케이스→상세 전환 · 히어로 아치 배치
 ├── images/           # 사이트에서 사용하는 이미지 (영문 파일명)
 └── .nojekyll         # GitHub Pages에서 파일 그대로 서빙
 ```
 
 ## 페이지 구성
 
-표지를 00번으로 두고, 하단 카운터와 각 페이지 아이브로우 번호가 같도록 JS가 실제 순서대로 번호를 매깁니다.
+표지를 00번으로 두고, 화면마다 고유 번호를 실제 순서대로 JS가 매깁니다 (하단 카운터와 아이브로우 번호 일치, 중복 없음).
+상단 단계는 각 섹션의 `data-step` 값으로 지정합니다 (`1`~`6` 단계, `reflection` 라벨, 값이 없으면 기존 브랜드 각주).
 
-| # | 섹션 | 하단 각주 | 내용 |
+| # | 섹션 | 상단 단계 | 내용 |
 |---|---|---|---|
 | 00 | Cover | — | 수채화 일러스트 배경 + 아치 프레임, 프로젝트명 · 메시지 · 메타 정보 |
-| 01 | Project Overview | 개요 | 서비스 정의, 핵심 경험 Flow, 프로젝트 정보 |
-| 02 | Background | 배경 | 부모의 목소리 → 바라는 것 / 현실 → Idea |
-| 03 | Problem | 문제점 | 질문 → 3가지 문제 → 서비스 방향 |
-| 04 | Persona | 타겟 페르소나 | 페르소나 정보 + 핵심 페인포인트 |
-| 05 | Solution | 서비스 소개, 해결책 | 세 가지 문제에 대한 하나의 해답 |
-| 06 | Service Concept | 서비스 컨셉 | INPUT → CREATE → READ → ACTIVITY → RECORD |
-| 07 | Age-based Personalization | 연령별 개인화 | 그림책 수준 평정기준 기반 3단계 생성 기준표, 생성 로직 |
-| 08 | Generation Output | 생성 결과 비교 | 연령별 이해력 활동 결과 3단 비교 (활동 구성 · 활동 수준 · 질문과 의도) |
-| 09 | Visual Design System | 디자인 시스템 | Brand Identity(네이밍 + 서비스 컬러 테마 4종) · Typography · UI Components |
-| 10 | Core Features | 핵심기능(MVP) | 동화 생성 · 부모 대시보드 · 놀이마당 |
-| 11 | Input & Create | 디자인 ① | 선택형 · 대화형 입력, 생성 중 화면 (쇼케이스) |
-| 12 | Create UX Design | 디자인 ① UX | 쇼케이스 이미지가 축소·이동하며 3가지 설계 포인트 |
-| 13 | Reading UX Design | 디자인 ② | Story Viewer + 이미지 내 콜아웃, 구현 기능 표기 |
-| 14 | Activity | 디자인 ③ | 독후활동 4종 탭 · 참여형 활동 · 리워드 게임 (쇼케이스) |
-| 15 | Activity UX Design | 디자인 ③ UX | 서비스 화면 탭과 생성 로직 범주 구분 |
-| 16 | Record | 디자인 ④ | Parent Dashboard와 정보 위계 (쇼케이스) |
-| 17 | Dashboard UX Design | 디자인 ④ UX | PRIMARY / SECONDARY 영역 하이라이트 |
-| 18 | Design to Development | 구현 과정 | 4단계 프로세스, 개인 구현 참여 범위 |
-| 19 | Architecture | AI 활용 | 팀 기술 구성, 생성 파이프라인 |
-| 20 | Design Refinement | 디자인 개선 | 생성 대기 화면 BEFORE / AFTER |
-| 21 | Business Model | BM 구조 | Free / Premium 구독 모델 |
-| 22 | Roadmap | 향후 계획 | 1차 MVP → 단기 고도화 → 글로벌 확장 |
-| 23 | Learned | 마무리 | 3가지 배움, 직접 경험한 범위, 기여도 |
-| 24 | Thank you | 끝 | Role · Contribution · Output, 서비스 링크 |
+| 01 | Project Overview | — | 서비스 정의, 핵심 경험 Flow, 프로젝트 정보 |
+| 02 | Background | 01 Discover | 부모의 목소리 → 바라는 것 / 현실 → Idea |
+| 03 | Problem | 01 Discover | 질문 → 3가지 문제 → 서비스 방향 |
+| 04 | Persona & Problem Definition | 02 Define | 페르소나 정보 + 핵심 페인포인트 |
+| 05 | User Needs & Core Value | 02 Define | 사용자 니즈 3가지 → 서비스 핵심가치 대응 |
+| 06 | SWOT & Strategic Insights | 03 Strategize | SWOT 2×2, Key Insight, 우선순위 판단 기준 3가지 |
+| 07 | MoSCoW Prioritization | 04 Prioritize | Must · Should · Could · Won't Have 기능 분류 |
+| 08 | MVP Scope | 04 Prioritize | 생성 → 독서 → 독후활동 → 책장 저장 핵심 경험 |
+| 09 | Solution | 04 Prioritize | 세 가지 문제에 대한 하나의 해답 |
+| 10 | Service Concept | 05 Design & Build | INPUT → CREATE → READ → ACTIVITY → RECORD |
+| 11 | Core Features | 05 Design & Build | 동화 생성 · 놀이마당 · 부모 대시보드 |
+| 12 | Age-based Personalization | 05 Design & Build | 연령별 3단계 생성 규칙, Generation Logic |
+| 13 | Generation Output | 05 Design & Build | 연령별 이해력 활동 결과 3단 비교 |
+| 14 | Visual Design System | 05 Design & Build | Brand Identity · Typography · UI Components |
+| 15 | Reading Experience — Input & Create | 05 Design & Build | 선택형 · 대화형 입력, 생성 중 화면 (쇼케이스) |
+| 16 | Create UX Design | 05 Design & Build | 쇼케이스 이미지가 축소·이동하며 3가지 설계 포인트 |
+| 17 | Reading UX Design | 05 Design & Build | Story Viewer + 이미지 내 콜아웃, 구현 기능 표기 |
+| 18 | Beyond Reading — Activity | 05 Design & Build | 독후활동 4종 탭 · 참여형 활동 · 리워드 게임 (쇼케이스) |
+| 19 | Activity UX Design | 05 Design & Build | 서비스 화면 탭과 생성 로직 범주 구분 |
+| 20 | Visual System — Record | 05 Design & Build | Parent Dashboard와 정보 위계 (쇼케이스) |
+| 21 | Dashboard UX Design | 05 Design & Build | PRIMARY / SECONDARY 영역 하이라이트 |
+| 22 | Design Refinement | 05 Design & Build | Constraint → Problem → Decision, 생성 대기 화면 BEFORE / AFTER |
+| 23 | Design to Development | 05 Design & Build | 4단계 프로세스, 개인 구현 참여 범위 |
+| 24 | Architecture | 05 Design & Build | 팀 기술 구성, 생성 파이프라인 |
+| 25 | Operational Considerations ① | 06 Operate & Future | 생성 흐름과 API 비용 발생 지점, 운영 제약 |
+| 26 | Operational Considerations ② | 06 Operate & Future | Issue → Discussion → Direction, Free / Premium 기능 구분 |
+| 27 | Business Model | 06 Operate & Future | Free / Premium 구독 모델, 기획 · 구현 · 향후 구분 |
+| 28 | Roadmap | 06 Operate & Future | 1차 MVP → 단기 고도화 → 글로벌 확장 |
+| 29 | Learned | Reflection | 3가지 배움, 직접 경험한 범위, 기여도 |
+| 30 | Thank you | — | Role · Contribution · Output, 서비스 링크 |
+
+### 프로세스 인디케이터
+
+- 상단 고정 헤더 자리에 `01 Discover — 02 Define — 03 Strategize — 04 Prioritize — 05 Design & Build — 06 Operate & Future`를 표시합니다.
+- 현재 단계는 딥 베리 + 굵게 + 진행 바, 이전 단계는 연한 핑크베리, 이후 단계는 연한 회색입니다.
+- 표지 · 개요 · 끝 페이지에서는 기존 브랜드 각주(토리동화 · UX/UI Portfolio)를 보여줍니다.
+- 900px 이하에서는 단계 번호와 바만 표시하고 현재 단계명만 함께 보여줍니다.
+- User Needs ~ MVP Scope 4개 페이지에는 세부 의사결정 흐름(User Needs → SWOT → MoSCoW → MVP Scope) 칩을 따로 둡니다.
+- 단계 구분은 포트폴리오 설명 체계이며, 실제 프로젝트의 모든 활동이 이 순서대로만 진행되었다는 의미는 아닙니다.
 
 ### 쇼케이스 → UX 상세 전환
 
-- 쇼케이스 페이지(11 · 14 · 16)는 이미지를 크게 보여주고, 바로 다음 UX 상세 페이지에서 같은 이미지가 축소·이동하며 설계 의도가 나타납니다.
+- 쇼케이스 페이지(15 · 18 · 20)는 이미지를 크게 보여주고, 바로 다음 UX 상세 페이지에서 같은 이미지가 축소·이동하며 설계 의도가 나타납니다.
 - 상세 페이지의 이미지를 쇼케이스 이미지 위치에서 출발시켜 스크롤 진행도에 맞춰 제자리로 옮기는 FLIP 방식이라, 하나의 이미지가 움직이는 것처럼 보입니다. 원본은 전환 중에만 숨깁니다.
 - 설명은 전환 후반부에 순서대로, 콜아웃은 이미지가 자리 잡은 뒤 나타나고, 역방향 스크롤 시 다시 사라집니다.
 - 스크롤 스냅이 켜지는 데스크톱(1024px · 700px 이상)에서만 동작하고, 태블릿 · 모바일 · 모션 최소화 설정에서는 완성 상태를 바로 보여줍니다.
@@ -88,12 +105,15 @@
 
 | 용도 | 값 |
 |---|---|
-| 페이지 배경 | `#FBF9F5` (일부 구조형 섹션 `#FAF8F3`) |
+| 페이지 배경 | `#FBF7F4` (구조형 섹션 `#F9F3EF`) — 로지 아이보리 |
 | 본문 | `#1A1B22` / `#1F1E1B` |
 | 보조 텍스트 | `#86837B` / `#77736C` |
-| 구분선 | `rgba(26,27,34,.14)` / `#E5E0D7` |
-| 포인트 | `#C4432B` (주홍) |
-| 정보 박스 | `#F3EEE5` |
+| 구분선 | `rgba(26,27,34,.14)` / `#E8DFDA` |
+| 포인트 (텍스트 · 선 · 활성 상태) | `#A73558` 딥 베리 |
+| 포인트 (배경 · 하이라이트) | `#F4A8BC` 핑크베리 (서비스 기본 테마), 연한 배경 `rgba(244,168,188,.16)` |
+| 정보 박스 | `#F2EAE6` |
+
+서비스 UI 목업과 Visual Design System의 서비스 토큰(`--tc-*`)은 실제 서비스 값을 그대로 유지합니다.
 
 **타입 스케일** (`:root`의 CSS 변수, 화면 너비·높이에 따라 `clamp()`로 조절)
 
@@ -232,3 +252,32 @@ python -m http.server 5500 --bind 127.0.0.1
 - 새싹 아이콘과 네이밍 설명을 나란한 박스로 묶고, 박스 높이를 컬러칩 ~ Theme Application 영역과 같게 맞춤 (Grid 행 공유)
 - Typography 항목 사이 구분선 제거, 설명 문구 수정
 - Core Features(10)와 Visual Design System(09) 순서 교체
+
+### 2026-10-21
+
+**기획 · 의사결정 페이지 추가** — PM 관점의 판단 근거를 보여주는 페이지 구성
+- User Needs & Core Value(신규): Background · Problem · Persona에서 확인한 니즈 3가지를 서비스 핵심가치와 1:1로 연결
+- SWOT & Strategic Insights: SWOT 2×2, Key Insight, 우선순위 판단 기준(User Value · Quality & Cost · Feasibility)
+- MoSCoW Prioritization: Must · Should · Could · Won't Have 분류, 기본 기록 시각화는 우선순위 조정을 거쳐 Must Have로 포함
+- MVP Scope: 생성 → 독서 → 독후활동 → 책장 저장 핵심 경험 (개념적 흐름임을 캡션으로 명시, Roadmap과 역할 구분)
+- Operational Considerations(2화면): 생성 API 호출 구조와 비용 발생 지점, 팀 논의, Free / Premium 기능 구분 — 비용 · 매출 수치는 산출하지 않았으므로 넣지 않음
+- Design Refinement: Constraint → UX Problem → Design Decision 레일 추가 (Before / After 이미지 크기 유지)
+- Business Model: 기획(요금 모델) · 구현(요금제 비교 · 결제 화면 UI, 결제 모듈 미연동) · 향후(TTS 목소리 다양화 · 모션) 구분
+  - 구현 여부는 서비스 저장소의 구독 페이지 코드를 확인해 표기
+- 이미지 모델 문구 통일: 기획 단계 검토 모델은 DALL·E 3, 정식 배포 전까지 OpenAI GPT Image 1 사용 후 정식 배포 시 DALL·E 3로 전환 예정
+
+**정보 구조 · 내비게이션**
+- 상단 브랜드 각주를 6단계 프로세스 인디케이터로 교체 (페이지별 `data-step`, Learned는 REFLECTION 라벨)
+- 페이지 순서 재정렬: Persona → User Needs → SWOT → MoSCoW → MVP Scope → Solution, Service Concept → Core Features, Dashboard UX → Design Refinement → Design to Development → Architecture
+- 여러 화면이 같은 번호를 공유하던 방식을 없애고 화면마다 고유 번호 부여 (00 ~ 30), 같은 제목이 이어지는 화면은 하단 메뉴에서 하나로 묶음
+- 아이브로우 영문 표기 통일 (한글 병기 제거, `MoSCoW`는 대문자 스타일 안에서도 철자 유지)
+- Core Features 카드 순서: 생성 → 놀이마당 → 부모 대시보드 / Solution 순서: 한국 문화 → 맞춤 생성 → 놀이마당 + 부모 대시보드
+
+**디자인**
+- 포인트 컬러를 주홍(`#C4432B`)에서 핑크베리 기반(딥 베리 `#A73558` · 핑크베리 `#F4A8BC`)으로 전환
+- 베이지 배경 · 카드 · 구분선의 노란 기운을 줄여 로지 아이보리 계열로 조정, 히어로 베일도 같은 방향으로 미세 조정
+- Age-based Personalization: "연령별 3단계 생성 규칙" 핵심 메시지 강조, 8개 범주는 보조 근거로 축소, Generation Logic을 연한 핑크베리 박스로 강조
+
+**검수**
+- 헤드리스 Chrome으로 1280×720 ~ 1920×1080, 태블릿 · 모바일 너비에서 화면 넘침 · 가로 스크롤 · 인디케이터 글자 잘림을 수치로 확인
+- 1366×768 이상에서 수정 페이지 모두 한 화면 안에 표시, 1280×720의 일부 겹침(Persona · Dashboard 등)은 기존부터 있던 값
