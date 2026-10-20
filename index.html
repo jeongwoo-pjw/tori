@@ -298,6 +298,153 @@
       </div>
     </section>
 
+    <!-- PRIORITIZATION & MVP STRATEGY ① — 의사결정 흐름 · SWOT -->
+    <section class="slide slide--fit slide--mv" id="mvp" data-idx="06" data-title="우선순위·MVP">
+      <div class="wrap mv">
+
+        <header class="mv__head">
+          <div class="rv">
+            <p class="eyebrow"><span>06</span>Prioritization &amp; MVP Strategy</p>
+            <h2 class="mv__title">무엇을 먼저 구현할 것인가?</h2>
+          </div>
+          <p class="mv__sub rv" style="--d:.1s">SWOT 분석을 통해 서비스의 기회와 제약을 검토하고, 페르소나의 니즈와 구현 우선순위를 고려해 팀원들과 MVP 범위를 구체화했습니다.</p>
+        </header>
+
+        <!-- 분석 → 의사결정 흐름 -->
+        <ol class="mv-flow rv" style="--d:.16s" aria-label="우선순위 설정 과정">
+          <li class="is-current"><span class="mv-flow__no">01</span><b>SWOT Analysis</b><span>서비스의 기회와 제약 검토</span></li>
+          <li><span class="mv-flow__no">02</span><b>User Needs</b><span>페르소나 핵심 니즈 — 한국 문화 동화 · 맞춤 생성 · 독후활동 연계</span></li>
+          <li><span class="mv-flow__no">03</span><b>MoSCoW</b><span>사용자 가치와 구현 범위 기준으로 기능 분류</span></li>
+          <li><span class="mv-flow__no">04</span><b>MVP Scope</b><span>핵심 경험부터 단계별 구현 범위 정의</span></li>
+        </ol>
+
+        <div class="mv__block mv__block--swot">
+          <div class="mv__lead rv" style="--d:.2s">
+            <p class="kicker"><i>A</i>SWOT Analysis</p>
+            <h3>서비스의 가능성과 제약을 함께 검토하다</h3>
+            <p>AI 개인화와 독후활동을 통한 차별화 가능성을 확인하는 동시에, 콘텐츠 완성도와 생성 비용, 서비스 신뢰성 등 운영 과정에서 발생할 수 있는 위험을 검토했습니다.</p>
+            <div class="mv__insight">
+              <p class="mv__insight-label">Key Insight</p>
+              <p>개인화된 독서 경험을 핵심 가치로 설정하되, <strong>AI 생성 비용과 콘텐츠 품질을 고려한 단계적 기능 구현</strong>이 필요했습니다.</p>
+            </div>
+          </div>
+          <div class="swot rv" style="--d:.28s">
+            <article class="swot__card swot__card--s">
+              <p class="swot__head"><b>S</b><span>Strengths</span><em>강점</em></p>
+              <ul><li>AI 기반 개인화 동화 생성</li><li>감정 경험을 중심으로 한 차별화</li><li>반복적인 독서 경험 유도</li></ul>
+            </article>
+            <article class="swot__card swot__card--w">
+              <p class="swot__head"><b>W</b><span>Weaknesses</span><em>약점</em></p>
+              <ul><li>콘텐츠 완성도 확보의 어려움</li><li>AI 생성 비용 발생</li></ul>
+            </article>
+            <article class="swot__card swot__card--o">
+              <p class="swot__head"><b>O</b><span>Opportunities</span><em>기회</em></p>
+              <ul><li>부모의 정서 교육 관심 증가</li><li>외국어 교육에 대한 관심</li><li>취침 전 독서 콘텐츠 수요</li><li>음성 AI 기술 발전</li></ul>
+            </article>
+            <article class="swot__card swot__card--t">
+              <p class="swot__head"><b>T</b><span>Threats</span><em>위협</em></p>
+              <ul><li>AI 관련 콘텐츠 규제 가능성</li><li>AI 생성 콘텐츠에 대한 신뢰 문제</li></ul>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRIORITIZATION & MVP STRATEGY ② — MoSCoW -->
+    <section class="slide slide--fit slide--mv" id="mvp-moscow" data-idx="06" data-title="우선순위·MVP" data-cont>
+      <div class="wrap mv">
+
+        <header class="mv__head">
+          <div class="rv">
+            <p class="eyebrow"><span>06</span>Prioritization &amp; MVP Strategy</p>
+            <p class="kicker mv__part"><i>B</i>MoSCoW Prioritization</p>
+            <h2 class="mv__title">사용자 가치와 구현 범위를<br />기준으로 기능을 구분하다</h2>
+          </div>
+          <div class="mv__side rv" style="--d:.1s">
+            <p class="mv__sub">페르소나의 핵심 니즈를 충족하는 기능을 우선하고, 부가 경험과 수익화 기능은 후속 단계로 구분했습니다.</p>
+            <ol class="mv-flow mv-flow--mini" aria-label="우선순위 설정 과정 중 현재 단계">
+              <li><b>SWOT</b></li><li><b>User Needs</b></li><li class="is-current"><b>MoSCoW</b></li><li><b>MVP Scope</b></li>
+            </ol>
+          </div>
+        </header>
+
+        <div class="moscow rv" style="--d:.18s">
+          <article class="moscow__card moscow__card--must">
+            <p class="moscow__head"><b>Must Have</b><span>핵심 기능</span></p>
+            <ul><li>AI 기반 스토리 및 삽화 생성</li><li>생성된 동화의 책장 저장</li><li>독후활동 연계</li><li>TTS 낭독</li><li>로그인</li></ul>
+          </article>
+          <article class="moscow__card">
+            <p class="moscow__head"><b>Should Have</b><span>보조 기능</span></p>
+            <ul><li>독서 및 독후활동 데이터 시각화</li><li>취침 모드</li><li>동화 공유 및 PDF 저장</li><li>유해 표현 필터링</li><li>아이 프로필 등록 및 관리</li></ul>
+          </article>
+          <article class="moscow__card">
+            <p class="moscow__head"><b>Could Have</b><span>확장 기능</span></p>
+            <ul><li>외국어 TTS</li><li>다국어 번역</li><li>삽화 모션 애니메이션</li><li>결제 및 수익화</li></ul>
+          </article>
+          <article class="moscow__card moscow__card--wont">
+            <p class="moscow__head"><b>Won’t Have</b><span>초기 범위 제외</span></p>
+            <ul><li>시리즈 동화 생성</li><li>주제 선정 의무화</li><li>관심사 기반 AI 동화 추천</li><li>실물 책 제작 연계</li></ul>
+            <p class="moscow__note">서비스에서 영구히 제외한 것이 아닌, 초기 개발 범위에서 제외한 기능입니다.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRIORITIZATION & MVP STRATEGY ③ — MVP SCOPE & ROADMAP -->
+    <section class="slide slide--fit slide--mv" id="mvp-scope" data-idx="06" data-title="우선순위·MVP" data-cont>
+      <div class="wrap mv">
+
+        <header class="mv__head">
+          <div class="rv">
+            <p class="eyebrow"><span>06</span>Prioritization &amp; MVP Strategy</p>
+            <p class="kicker mv__part"><i>C</i>MVP Scope &amp; Roadmap</p>
+            <h2 class="mv__title">핵심 경험부터 서비스 확장까지</h2>
+          </div>
+          <div class="mv__side rv" style="--d:.1s">
+            <p class="mv__sub">기능을 한 번에 구현하기보다, 동화 생성과 독서 경험을 중심으로 우선순위를 정하고 이후 서비스 고도화와 수익화 가능성을 검토했습니다.</p>
+            <ol class="mv-flow mv-flow--mini" aria-label="우선순위 설정 과정 중 현재 단계">
+              <li><b>SWOT</b></li><li><b>User Needs</b></li><li><b>MoSCoW</b></li><li class="is-current"><b>MVP Scope</b></li>
+            </ol>
+          </div>
+        </header>
+
+        <div class="mv-road rv" style="--d:.18s">
+          <p class="mv-road__label"><span>Initial Planning Priority</span>기획 초기에 설정한 단계별 구현 우선순위</p>
+          <ol class="mv-road__steps">
+            <li class="is-core">
+              <p class="mv-road__no">01<span>Priority 1</span></p>
+              <b>Core MVP</b>
+              <ul><li>AI 동화 생성</li><li>책장 저장</li><li>독후활동</li><li>기본 TTS</li></ul>
+            </li>
+            <li>
+              <p class="mv-road__no">02<span>Priority 2</span></p>
+              <b>Experience Enhancement</b>
+              <ul><li>부모 대시보드</li><li>프로필 관리</li><li>취침 모드</li><li>공유 기능</li></ul>
+            </li>
+            <li>
+              <p class="mv-road__no">03<span>Priority 3</span></p>
+              <b>Revenue Model</b>
+              <ul><li>Free/Premium 기능 구분</li><li>구독 모델 검토</li></ul>
+            </li>
+            <li>
+              <p class="mv-road__no">04<span>Priority 4</span></p>
+              <b>Future Expansion</b>
+              <ul><li>다국어 지원</li><li>삽화 애니메이션</li><li>글로벌 서비스 확장</li></ul>
+            </li>
+          </ol>
+          <p class="mv-road__note">* 기획 초기의 기능 분류이며 구현 완료 여부를 뜻하지 않습니다. 실제 구현 범위와 이후 계획은 <a href="#s6">Core Features</a> · <a href="#s12">Roadmap</a>에서 구분해 설명합니다.</p>
+        </div>
+
+        <div class="mv-msg rv" style="--d:.26s">
+          <p class="kicker">Decision</p>
+          <p class="mv-msg__text">핵심 사용자 경험을 먼저 정의하고, <strong>구현 가능성과 서비스 확장성</strong>을 함께 고려해 기능의 우선순위를 설정했습니다.</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- 09 SERVICE CONCEPT -->
     <section class="slide slide--fit slide--cj" id="concept" data-idx="06" data-title="서비스 컨셉">
       <div class="wrap cj">
@@ -930,7 +1077,7 @@
             <article>
               <p class="kicker">AI</p>
               <h3>Solar · GPT Image</h3>
-              <p>Upstage Solar API로 한국어·문화 맥락에 맞는 스토리를 생성하고, GPT Image 1에 캐릭터 시트를 주입해 컷 간 일관성을 유지합니다. (향후 DALL·E 3 전환)</p>
+              <p>Upstage Solar API로 한국어·문화 맥락에 맞는 스토리를 생성하고, GPT Image 1에 캐릭터 시트를 주입해 컷 간 일관성을 유지합니다. (정식 배포 시 DALL·E 3 전환 예정)</p>
               <p class="tech__tags">Upstage Solar · OpenAI GPT Image 1</p>
             </article>
             <article>
@@ -959,10 +1106,18 @@
         <header class="rf__head">
           <div class="rv">
             <p class="eyebrow"><span>20</span>Design Refinement</p>
-            <h2 class="rf__title">생성 대기 과정의<br />상태 피드백 개선</h2>
+            <h2 class="rf__title">기다림의 불확실성을<br />줄이는 경험</h2>
           </div>
-          <p class="rf__sub rv" style="--d:.1s">동화 생성에 시간이 소요되는 점을 고려하여, 정적인 로딩 화면을 시각적인 단계별 상태 안내 화면으로 개선했습니다. 사용자가 현재 진행 중인 작업을 파악할 수 있도록 시스템 상태의 가시성을 높이는 방향으로 설계했습니다.</p>
+          <p class="rf__sub rv" style="--d:.1s">AI 스토리와 삽화 생성에 시간이 소요되는 기술적 제약을 발견하고, 사용자가 생성 과정을 이해할 수 있도록 상태 피드백 방식을 개선했습니다.</p>
         </header>
+
+        <div class="rf__body">
+        <!-- 문제 발견 → 개선 방향 -->
+        <ol class="rf__steps rv" style="--d:.14s" aria-label="문제 발견부터 개선 방향까지">
+          <li><span class="rf__no">01</span><p class="rf__step-head"><b>Constraint</b>기술적 제약</p><p>AI 스토리 및 삽화 생성에는 일정 시간이 필요하며, 즉각적인 결과 제공이 어렵습니다.</p></li>
+          <li><span class="rf__no">02</span><p class="rf__step-head"><b>UX Problem</b>사용자 경험 문제</p><p>정적인 로딩 화면만으로는 진행 중인 작업을 파악하기 어려워, 생성 과정에 불확실성을 느낄 수 있습니다.</p></li>
+          <li><span class="rf__no">03</span><p class="rf__step-head"><b>Design Decision</b>개선 방향</p><p>생성 과정을 단계별로 구분하고 완료·진행·대기 상태를 시각적으로 표현해 현재 작업을 이해할 수 있도록 설계했습니다.</p></li>
+        </ol>
 
         <div class="rf__compare">
           <figure class="rf__case rv" style="--d:.16s">
@@ -972,27 +1127,122 @@
                 <img src="images/refine-before.png" alt="개선 전 로딩 화면 — 스피너와 '이야기 쓰는 중' 문구, 모든 단계가 같은 상태로 나열된 목록" loading="lazy" />
               </div>
             </div>
-            <p class="rf__desc"><span>Problem</span>현재 진행 중인 작업을 파악하기 어려움</p>
+            <p class="rf__desc"><span>Problem</span>단일 로딩 상태만 제공하여 현재 진행 과정을 파악하기 어려움</p>
           </figure>
           <span class="rf__arrow" aria-hidden="true"></span>
           <figure class="rf__case rf__case--after rv" style="--d:.26s">
-            <figcaption><span class="rf__label">After</span><b>단계별 진행 상태 안내</b></figcaption>
+            <figcaption><span class="rf__label">After</span><b>단계별 생성 상태 안내</b></figcaption>
             <div class="rf__shot">
               <div class="rf__frame" style="--iar: 1103 / 1154">
                 <img src="images/screen-create-loading.png" alt="개선 후 생성 대기 화면 — 진행 퍼센트와 완료·진행중·대기 단계 표시, 점점 완성되는 삽화, 안전 필터 결과" loading="lazy" />
                 <span class="rf__zone" style="--x: 33.5%; --y: 7.6%; --w: 33%; --h: 15.6%; --pd: .6s"></span>
                 <span class="rf__zone" style="--x: 9.2%; --y: 24.4%; --w: 81.8%; --h: 49.4%; --pd: .75s"></span>
                 <span class="rf__zone" style="--x: 9.2%; --y: 75.8%; --w: 81.8%; --h: 17.2%; --pd: .9s"></span>
-                <span class="rf__tag" style="--x: 33.5%; --y: 7.6%; --pd: .65s"><i>1</i>단계별 상태 표시</span>
-                <span class="rf__tag" style="--x: 9.2%; --y: 24.4%; --pd: .8s"><i>2</i>삽화 완성도 변화</span>
-                <span class="rf__tag" style="--x: 9.2%; --y: 75.8%; --pd: .95s"><i>3</i>안전 필터 체크</span>
+                <span class="rf__tag" style="--x: 33.5%; --y: 7.6%; --pd: .65s"><i>1</i>단계별 진행 상태 구분</span>
+                <span class="rf__tag" style="--x: 9.2%; --y: 24.4%; --pd: .8s"><i>2</i>삽화 완성 과정 시각화</span>
+                <span class="rf__tag" style="--x: 9.2%; --y: 75.8%; --pd: .95s"><i>3</i>안전 필터 확인 상태</span>
               </div>
             </div>
-            <p class="rf__desc"><span>Improvement</span>생성 단계별 안내 정보를 제공하도록 개선</p>
+            <p class="rf__desc"><span>Improvement</span>단계별 진행 상태 · 삽화 완성 과정 · 안전 필터 확인 상태 안내</p>
           </figure>
         </div>
+        </div>
 
-        <p class="rf__foot rv" style="--d:.3s">* 단계 안내는 생성 흐름을 순서대로 보여주는 화면으로, 서버의 실시간 진행률과 연동된 수치는 아닙니다.</p>
+        <div class="rf__bottom rv" style="--d:.3s">
+          <p class="rf__msg">생성 시간을 직접 단축할 수 없는 상황에서, 사용자가 기다리는 과정을 이해할 수 있도록 <strong>시스템 상태의 가시성</strong>을 높였습니다.</p>
+          <p class="rf__foot">* 단계 안내와 퍼센트 표시는 생성 흐름을 순서대로 보여주는 화면으로, 서버의 실시간 진행률과 연동된 수치는 아닙니다.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OPERATIONAL CONSIDERATIONS ① — 생성 구조와 비용 발생 지점 -->
+    <section class="slide slide--fit slide--op" id="ops" data-idx="22" data-title="운영 고려">
+      <div class="wrap op">
+
+        <header class="op__head">
+          <div class="rv">
+            <p class="eyebrow"><span>22</span>Operational Considerations</p>
+            <h2 class="op__title">기능 구현을 넘어,<br />운영 가능성까지</h2>
+          </div>
+          <p class="op__sub rv" style="--d:.1s">AI 기반 서비스의 생성 구조를 검토하며 API 호출에 따른 반복 비용을 확인했고, 지속 가능한 운영을 위해 수익화 방향을 팀원들과 논의했습니다.</p>
+        </header>
+
+        <!-- AI 동화 생성 흐름과 비용 발생 지점 -->
+        <div class="op-pipe rv" style="--d:.16s">
+          <p class="kicker">Generation Flow</p>
+          <ol class="op-pipe__nodes" aria-label="AI 동화 생성 흐름">
+            <li><span class="op-pipe__key">User Input</span><b>아이 정보 · 주제 입력</b><span class="op-pipe__tool">이름 · 나이 · 한국 소재</span></li>
+            <li class="is-cost"><span class="op-pipe__key">Solar API</span><b>스토리 생성</b><span class="op-pipe__tool">Upstage Solar</span><span class="op-pipe__cost">Per-request API Cost</span></li>
+            <li class="is-cost"><span class="op-pipe__key">Image Generation API</span><b>삽화 생성</b><span class="op-pipe__tool">OpenAI GPT Image 1</span><span class="op-pipe__cost">Per-request API Cost</span></li>
+            <li><span class="op-pipe__key">Story Output</span><b>동화 완성</b><span class="op-pipe__tool">책장 저장 · 감상</span></li>
+          </ol>
+          <p class="op-pipe__note">* 현재 구현 모델 기준입니다. DALL·E 3는 기획 단계에서 검토한 이미지 모델로, 정식 배포 전까지는 OpenAI GPT Image 1을 사용하고 정식 배포 시 DALL·E 3로 전환할 예정입니다.</p>
+        </div>
+
+        <div class="op__block rv" style="--d:.24s">
+          <div class="op__lead">
+            <p class="kicker"><i>A</i>Operational Constraint</p>
+            <h3>사용량이 증가할수록 발생하는 생성 비용</h3>
+            <p>동화를 생성할 때마다 스토리와 삽화 생성 API가 호출되는 구조로, 서비스 이용량이 증가할수록 운영 비용도 함께 발생할 수 있다는 점을 확인했습니다.</p>
+          </div>
+          <div class="op__points">
+            <p class="op__points-title">핵심 고려사항</p>
+            <ol>
+              <li><span>01</span>스토리 생성 API 호출 비용</li>
+              <li><span>02</span>삽화 생성 API 호출 비용</li>
+              <li><span>03</span>반복 생성 시 누적되는 운영 비용</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OPERATIONAL CONSIDERATIONS ② — 팀 논의 · 기능 구분 -->
+    <section class="slide slide--fit slide--op" id="ops-direction" data-idx="22" data-title="운영 고려" data-cont>
+      <div class="wrap op">
+
+        <header class="op__head">
+          <div class="rv">
+            <p class="eyebrow"><span>22</span>Operational Considerations</p>
+            <p class="kicker mv__part"><i>B</i>Team Discussion</p>
+            <h2 class="op__title">비용 구조를 고려한<br />서비스 운영 방향 논의</h2>
+          </div>
+          <p class="op__sub rv" style="--d:.1s">AI 생성 기능을 제공하면서 발생하는 비용을 고려해 팀원들과 운영 방안을 논의했습니다. 초기 프로젝트 단계에서 직접적인 비용 절감 방안을 구현하기보다는, 향후 정식 서비스 운영 시 구독형 수익 모델을 검토하는 방향으로 정리했습니다.</p>
+        </header>
+
+        <ol class="op-steps rv" style="--d:.16s" aria-label="운영 방향 의사결정 과정">
+          <li><span class="op-steps__no">01</span><b>Issue</b><p>생성 요청마다 발생하는 API 비용</p></li>
+          <li><span class="op-steps__no">02</span><b>Discussion</b><p>팀원들과 운영 비용 및 수익화 가능성 검토</p></li>
+          <li><span class="op-steps__no">03</span><b>Direction</b><p>Free/Premium 구독 모델을 통한 비용 충당 방향 검토</p></li>
+        </ol>
+
+        <div class="op__block op__block--tier rv" style="--d:.24s">
+          <div class="op__lead">
+            <p class="kicker"><i>C</i>Business Consideration</p>
+            <h3>서비스의 지속 가능성을 고려한 기능 구분</h3>
+            <p>무료 사용자에게는 기본적인 동화 생성 경험을 제공하고, 프리미엄 사용자에게는 생성 횟수와 콘텐츠 활용 범위를 확장하는 구독 모델을 기획했습니다.</p>
+          </div>
+          <div class="op-tier">
+            <article class="op-tier__card">
+              <p class="op-tier__name">Free</p>
+              <b>기본 동화 생성 경험</b>
+              <ul><li>생성 횟수 제한</li><li>기본 삽화 및 TTS</li><li>책장 저장 수 제한</li></ul>
+            </article>
+            <article class="op-tier__card op-tier__card--pick">
+              <p class="op-tier__name">Premium</p>
+              <b>확장된 동화 제작 경험</b>
+              <ul><li>동화 생성 횟수 확대</li><li>삽화 애니메이션 등 추가 기능</li><li>다국어 TTS 및 콘텐츠 저장 기능 확대</li></ul>
+            </article>
+            <p class="op-tier__note">기획안 단계의 기능 구분입니다. 구체적인 요금제는 다음 Business Model에서 정리합니다.</p>
+          </div>
+        </div>
+
+        <div class="mv-msg rv" style="--d:.3s">
+          <p class="kicker">Consideration</p>
+          <p class="mv-msg__text">기술적 구현 가능성뿐 아니라 <strong>서비스 운영 과정에서 발생할 비용과 수익화 가능성</strong>까지 함께 고려했습니다.</p>
+        </div>
 
       </div>
     </section>
@@ -1021,13 +1271,18 @@
             <p class="plan__price">₩9,900<small>/ 월</small></p>
             <ul>
               <li>무제한 동화 생성</li>
-              <li>다양한 TTS 목소리</li>
-              <li>삽화 모션 애니메이션</li>
+              <li>다양한 TTS 목소리<span class="bm__soon">향후 확장</span></li>
+              <li>삽화 모션 애니메이션<span class="bm__soon">향후 확장</span></li>
               <li>고해상도 PDF 인쇄 · 저장</li>
               <li>책장 무제한 저장</li>
             </ul>
           </article>
         </div>
+        <dl class="bm__scope rv" style="--d:.2s">
+          <div><dt class="is-plan">기획</dt><dd>Free/Premium 구독 모델과 요금은 서비스 기획안입니다.</dd></div>
+          <div><dt class="is-done">구현</dt><dd>요금제 비교 · 결제 진행 화면(UI) — 실제 결제 모듈은 연동 전이며, 결제 시 준비 중 안내를 표시합니다.</dd></div>
+          <div><dt class="is-next">향후</dt><dd>TTS 목소리 다양화 · 삽화 모션 애니메이션 등은 Roadmap의 경험 고도화 단계에 해당합니다.</dd></div>
+        </dl>
       </div>
     </section>
 

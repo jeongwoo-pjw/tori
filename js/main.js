@@ -5,11 +5,14 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // 페이지 번호: 실제 순서대로 자동 정렬 (표지 제외) — 섹션 추가·이동 시 번호를 손으로 고치지 않도록
+  // data-cont: 앞 섹션이 이어지는 페이지 (같은 번호를 공유)
+  let no = 0;
   slides.forEach((s, i) => {
     if (i === 0) return;
-    s.dataset.idx = pad(i);
+    if (!('cont' in s.dataset)) no += 1;
+    s.dataset.idx = pad(no);
     const num = s.querySelector('.eyebrow > span:first-child');
-    if (num) num.textContent = pad(i);
+    if (num) num.textContent = pad(no);
   });
 
   // 고정 크롬: 현재 섹션 · 페이지 · 진행 바
@@ -20,7 +23,7 @@
   const $cur = document.querySelector('.chrome__cur');
   const $bar = document.querySelector('.chrome__bar');
   // 표지를 00번으로: 하단 카운터가 각 페이지 아이브로우 번호와 같도록
-  document.querySelector('.chrome__total').textContent = pad(total - 1);
+  document.querySelector('.chrome__total').textContent = pad(no);
 
   // 하단 각주 메뉴: 번호 없이 주요 페이지만. 디자인①~④와 각 UX 상세는 '디자인' 하나로 묶고, 마무리·끝은 제외
   const $menu = document.querySelector('.chrome__menu');
@@ -31,6 +34,7 @@
   slides.forEach((slide, i) => {
     const title = slide.dataset.title;
     if (!title || EXCLUDE.includes(title)) return;
+    if ('cont' in slide.dataset) { menuOf[i] = menuOf[i - 1]; return; }
     if (/^디자인\s?[①-④\d]/.test(title)) {
       if (designLink) { menuOf[i] = designLink; return; }
     }
@@ -56,7 +60,7 @@
     $section.style.visibility = s.classList.contains('slide--hero') ? 'hidden' : '';
     $toTop.classList.toggle('is-visible', i > 0);
     menuLinks.forEach((a) => (a === menuOf[i] ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
-    $cur.textContent = pad(i);
+    $cur.textContent = s.dataset.idx || pad(i);
     $bar.style.width = `${(i / (total - 1)) * 100}%`;
     document.body.classList.toggle('on-dark', s.classList.contains('is-dark'));
   };
