@@ -5,14 +5,12 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // 페이지 번호: 실제 순서대로 자동 정렬 (표지 제외) — 섹션 추가·이동 시 번호를 손으로 고치지 않도록
-  // data-cont: 앞 섹션이 이어지는 페이지 (같은 번호를 공유)
-  let no = 0;
+  // 화면마다 고유 번호 (중복 없음)
   slides.forEach((s, i) => {
     if (i === 0) return;
-    if (!('cont' in s.dataset)) no += 1;
-    s.dataset.idx = pad(no);
+    s.dataset.idx = pad(i);
     const num = s.querySelector('.eyebrow > span:first-child');
-    if (num) num.textContent = pad(no);
+    if (num) num.textContent = pad(i);
   });
 
   // 고정 크롬: 현재 섹션 · 페이지 · 진행 바
@@ -23,7 +21,7 @@
   const $cur = document.querySelector('.chrome__cur');
   const $bar = document.querySelector('.chrome__bar');
   // 표지를 00번으로: 하단 카운터가 각 페이지 아이브로우 번호와 같도록
-  document.querySelector('.chrome__total').textContent = pad(no);
+  document.querySelector('.chrome__total').textContent = pad(total - 1);
 
   // 하단 각주 메뉴: 번호 없이 주요 페이지만. 디자인①~④와 각 UX 상세는 '디자인' 하나로 묶고, 마무리·끝은 제외
   const $menu = document.querySelector('.chrome__menu');
@@ -34,7 +32,8 @@
   slides.forEach((slide, i) => {
     const title = slide.dataset.title;
     if (!title || EXCLUDE.includes(title)) return;
-    if ('cont' in slide.dataset) { menuOf[i] = menuOf[i - 1]; return; }
+    // 같은 제목이 이어지는 화면(예: 운영 고려 2화면)은 메뉴 항목 하나로
+    if (i > 0 && slides[i - 1].dataset.title === title) { menuOf[i] = menuOf[i - 1]; return; }
     if (/^디자인\s?[①-④\d]/.test(title)) {
       if (designLink) { menuOf[i] = designLink; return; }
     }
@@ -50,11 +49,11 @@
     if (a.textContent === '디자인') designLink = a;
   });
 
-  // 상단 기획 프로세스: data-step 1~5는 단계 표시, business · reflection은 라벨만, 없으면 기존 각주
+  // 상단 기획 프로세스: data-step 1~6은 단계 표시, reflection은 라벨만, 없으면 기존 각주(표지 · 개요 · 끝)
   const $top = document.querySelector('.chrome--top');
   const processSteps = [...document.querySelectorAll('.process li')];
   const $processLabel = document.querySelector('.process-label');
-  const STEP_LABELS = { business: 'Business & Future', reflection: 'Reflection' };
+  const STEP_LABELS = { reflection: 'Reflection' };
   const setStep = (step) => {
     const n = Number(step) || 0;
     $top.classList.toggle('is-process', n > 0);
@@ -78,7 +77,7 @@
     $section.style.visibility = s.classList.contains('slide--hero') ? 'hidden' : '';
     $toTop.classList.toggle('is-visible', i > 0);
     menuLinks.forEach((a) => (a === menuOf[i] ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
-    $cur.textContent = s.dataset.idx || pad(i);
+    $cur.textContent = pad(i);
     $bar.style.width = `${(i / (total - 1)) * 100}%`;
     document.body.classList.toggle('on-dark', s.classList.contains('is-dark'));
   };
