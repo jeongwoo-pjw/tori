@@ -21,6 +21,15 @@
       <span class="brand__en">Korean AI Storybook Studio</span>
     </a>
     <p class="chrome__meta">UX/UI Portfolio</p>
+    <!-- 기획 프로세스: 페이지의 data-step에 따라 현재 단계 표시 (표지 · 개요 · 끝은 기존 각주) -->
+    <ol class="process" aria-label="기획 프로세스">
+      <li><span>01</span><b>Discover</b></li>
+      <li><span>02</span><b>Define</b></li>
+      <li><span>03</span><b>Strategize</b></li>
+      <li><span>04</span><b>Prioritize</b></li>
+      <li><span>05</span><b>Design &amp; Build</b></li>
+    </ol>
+    <p class="process-label" aria-live="polite"></p>
   </header>
 
   <!-- 고정 푸터: 현재 섹션 + 진행 -->
@@ -141,7 +150,7 @@
     </section>
 
     <!-- 02 BACKGROUND -->
-    <section class="slide slide--fit" id="s2" data-idx="02" data-title="배경">
+    <section class="slide slide--fit" id="s2" data-idx="02" data-title="배경" data-step="1">
       <div class="wrap bp">
 
         <header class="bp__head rv">
@@ -181,7 +190,7 @@
     </section>
 
     <!-- 03 PROBLEM -->
-    <section class="slide slide--fit slide--pb" id="problem" data-idx="03" data-title="문제점">
+    <section class="slide slide--fit slide--pb" id="problem" data-idx="03" data-title="문제점" data-step="1">
       <div class="wrap pb">
 
         <header class="pb__head">
@@ -234,7 +243,7 @@
     </section>
 
     <!-- 03 타겟 페르소나 -->
-    <section class="slide" id="s3" data-idx="04" data-title="타겟 페르소나">
+    <section class="slide" id="s3" data-idx="04" data-title="타겟 페르소나" data-step="2">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>04</span>Persona — 타겟 페르소나</p>
@@ -267,8 +276,8 @@
       </div>
     </section>
 
-    <!-- PRIORITIZATION & MVP STRATEGY ① — 의사결정 흐름 · SWOT -->
-    <section class="slide slide--fit slide--mv" id="mvp" data-idx="05" data-title="우선순위·MVP">
+    <!-- PRIORITIZATION & MVP STRATEGY ① — USER NEEDS · SWOT -->
+    <section class="slide slide--fit slide--mv" id="mvp" data-idx="05" data-title="우선순위·MVP" data-step="3">
       <div class="wrap mv">
 
         <header class="mv__head">
@@ -276,64 +285,74 @@
             <p class="eyebrow"><span>05</span>Prioritization &amp; MVP Strategy</p>
             <h2 class="mv__title">무엇을 먼저 구현할 것인가?</h2>
           </div>
-          <p class="mv__sub rv" style="--d:.1s">SWOT 분석을 통해 서비스의 기회와 제약을 검토하고, 페르소나의 니즈와 구현 우선순위를 고려해 팀원들과 MVP 범위를 구체화했습니다.</p>
+          <div class="mv__side rv" style="--d:.1s">
+            <p class="mv__sub">SWOT 분석을 통해 서비스의 기회와 제약을 검토하고, 페르소나의 니즈와 구현 우선순위를 고려해 팀원들과 MVP 범위를 구체화했습니다.</p>
+            <ol class="mv-flow mv-flow--mini" aria-label="우선순위 설정 과정 중 현재 단계">
+              <li><b>User Needs</b></li><li class="is-current"><b>SWOT</b></li><li><b class="nocase">MoSCoW</b></li><li><b>MVP Scope</b></li>
+            </ol>
+          </div>
         </header>
 
-        <!-- 분석 → 의사결정 흐름 -->
-        <ol class="mv-flow rv" style="--d:.16s" aria-label="우선순위 설정 과정">
-          <li class="is-current"><span class="mv-flow__no">01</span><b>SWOT Analysis</b><span>서비스의 기회와 제약 검토</span></li>
-          <li><span class="mv-flow__no">02</span><b>User Needs</b><span>페르소나 핵심 니즈 — 한국 문화 동화 · 맞춤 생성 · 독후활동 연계</span></li>
-          <li><span class="mv-flow__no">03</span><b>MoSCoW</b><span>사용자 가치와 구현 범위 기준으로 기능 분류</span></li>
-          <li><span class="mv-flow__no">04</span><b>MVP Scope</b><span>핵심 경험부터 단계별 구현 범위 정의</span></li>
-        </ol>
-
         <div class="mv__block mv__block--swot">
+          <!-- USER NEEDS: Problem · Persona에서 도출한 니즈 요약 -->
           <div class="mv__lead rv" style="--d:.2s">
-            <p class="kicker"><i>A</i>SWOT Analysis</p>
-            <h3>서비스의 가능성과 제약을 함께 검토하다</h3>
-            <p>AI 개인화와 독후활동을 통한 차별화 가능성을 확인하는 동시에, 콘텐츠 완성도와 생성 비용, 서비스 신뢰성 등 운영 과정에서 발생할 수 있는 위험을 검토했습니다.</p>
-            <div class="mv__insight">
-              <p class="mv__insight-label">Key Insight</p>
-              <p>개인화된 독서 경험을 핵심 가치로 설정하되, <strong>AI 생성 비용과 콘텐츠 품질을 고려한 단계적 기능 구현</strong>이 필요했습니다.</p>
+            <p class="kicker">User Needs</p>
+            <h3>사용자가 필요로 하는 핵심 경험</h3>
+            <p>앞선 리서치와 페르소나에서 도출한 사용자 니즈를 바탕으로 서비스의 핵심 가치를 정의했습니다.</p>
+            <ol class="mv-needs">
+              <li><span>01</span><b>한국 문화가 담긴 이야기</b><p>한국적인 소재와 문화적 경험을 담은 동화 콘텐츠</p></li>
+              <li><span>02</span><b>아이에게 맞는 개인화</b><p>아이의 나이와 관심사를 반영한 맞춤형 이야기</p></li>
+              <li><span>03</span><b>독서 이후까지 이어지는 경험</b><p>동화 감상에서 독후활동과 기록으로 연결되는 독서 경험</p></li>
+            </ol>
+            <p class="mv__caption">* <a href="#problem">Problem</a> · <a href="#s3">Persona</a>에서 도출한 니즈를 요약했습니다.</p>
+          </div>
+          <!-- SWOT -->
+          <div class="mv__swot rv" style="--d:.28s">
+            <p class="kicker">SWOT Analysis</p>
+            <h3>서비스의 기회와 제약을 검토하다</h3>
+            <div class="swot">
+              <article class="swot__card swot__card--s">
+                <p class="swot__head"><b>S</b><span>Strengths</span><em>강점</em></p>
+                <ul><li>AI 기반 개인화</li><li>감정 경험 차별화</li><li>반복 사용 유도 가능성</li></ul>
+              </article>
+              <article class="swot__card swot__card--w">
+                <p class="swot__head"><b>W</b><span>Weaknesses</span><em>약점</em></p>
+                <ul><li>콘텐츠 완성도 확보의 어려움</li><li>AI 생성 비용 발생</li></ul>
+              </article>
+              <article class="swot__card swot__card--o">
+                <p class="swot__head"><b>O</b><span>Opportunities</span><em>기회</em></p>
+                <ul><li>부모의 정서 교육 관심 증가</li><li>외국어 교육 관심 증가</li><li>취침 전 독서 콘텐츠 수요</li><li>음성 AI 기술 발전</li></ul>
+              </article>
+              <article class="swot__card swot__card--t">
+                <p class="swot__head"><b>T</b><span>Threats</span><em>위협</em></p>
+                <ul><li>AI 관련 콘텐츠 규제 가능성</li><li>AI 생성 콘텐츠의 신뢰성 문제</li></ul>
+              </article>
             </div>
           </div>
-          <div class="swot rv" style="--d:.28s">
-            <article class="swot__card swot__card--s">
-              <p class="swot__head"><b>S</b><span>Strengths</span><em>강점</em></p>
-              <ul><li>AI 기반 개인화 동화 생성</li><li>감정 경험을 중심으로 한 차별화</li><li>반복적인 독서 경험 유도</li></ul>
-            </article>
-            <article class="swot__card swot__card--w">
-              <p class="swot__head"><b>W</b><span>Weaknesses</span><em>약점</em></p>
-              <ul><li>콘텐츠 완성도 확보의 어려움</li><li>AI 생성 비용 발생</li></ul>
-            </article>
-            <article class="swot__card swot__card--o">
-              <p class="swot__head"><b>O</b><span>Opportunities</span><em>기회</em></p>
-              <ul><li>부모의 정서 교육 관심 증가</li><li>외국어 교육에 대한 관심</li><li>취침 전 독서 콘텐츠 수요</li><li>음성 AI 기술 발전</li></ul>
-            </article>
-            <article class="swot__card swot__card--t">
-              <p class="swot__head"><b>T</b><span>Threats</span><em>위협</em></p>
-              <ul><li>AI 관련 콘텐츠 규제 가능성</li><li>AI 생성 콘텐츠에 대한 신뢰 문제</li></ul>
-            </article>
-          </div>
+        </div>
+
+        <div class="mv-msg rv" style="--d:.34s">
+          <p class="kicker">Key Insight</p>
+          <p class="mv-msg__text">개인화된 독서 경험을 핵심 가치로 설정하되, <strong>콘텐츠 품질과 생성 비용을 고려한 기능 우선순위</strong>가 필요했습니다.</p>
         </div>
 
       </div>
     </section>
 
     <!-- PRIORITIZATION & MVP STRATEGY ② — MoSCoW -->
-    <section class="slide slide--fit slide--mv" id="mvp-moscow" data-idx="05" data-title="우선순위·MVP" data-cont>
+    <section class="slide slide--fit slide--mv" id="mvp-moscow" data-idx="05" data-title="우선순위·MVP" data-cont data-step="4">
       <div class="wrap mv">
 
         <header class="mv__head">
           <div class="rv">
             <p class="eyebrow"><span>05</span>Prioritization &amp; MVP Strategy</p>
-            <p class="kicker mv__part"><i>B</i>MoSCoW Prioritization</p>
+            <p class="kicker mv__part"><span class="nocase">MoSCoW</span> Prioritization</p>
             <h2 class="mv__title">사용자 가치와 구현 범위를<br />기준으로 기능을 구분하다</h2>
           </div>
           <div class="mv__side rv" style="--d:.1s">
-            <p class="mv__sub">페르소나의 핵심 니즈를 충족하는 기능을 우선하고, 부가 경험과 수익화 기능은 후속 단계로 구분했습니다.</p>
+            <p class="mv__sub">사용자의 핵심 니즈를 충족하는 기능을 우선하고, 부가 경험과 수익화 기능은 후속 단계로 구분했습니다.</p>
             <ol class="mv-flow mv-flow--mini" aria-label="우선순위 설정 과정 중 현재 단계">
-              <li><b>SWOT</b></li><li><b>User Needs</b></li><li class="is-current"><b>MoSCoW</b></li><li><b>MVP Scope</b></li>
+              <li><b>User Needs</b></li><li><b>SWOT</b></li><li class="is-current"><b class="nocase">MoSCoW</b></li><li><b>MVP Scope</b></li>
             </ol>
           </div>
         </header>
@@ -345,77 +364,62 @@
           </article>
           <article class="moscow__card">
             <p class="moscow__head"><b>Should Have</b><span>보조 기능</span></p>
-            <ul><li>독서 및 독후활동 데이터 시각화</li><li>취침 모드</li><li>동화 공유 및 PDF 저장</li><li>유해 표현 필터링</li><li>아이 프로필 등록 및 관리</li></ul>
+            <ul><li>독서 및 독후활동 데이터 시각화</li><li>취침 모드</li><li>동화 공유 및 PDF 저장 기능</li><li>유해 표현 필터링</li><li>아이 프로필 등록 및 관리</li></ul>
           </article>
           <article class="moscow__card">
             <p class="moscow__head"><b>Could Have</b><span>확장 기능</span></p>
             <ul><li>외국어 TTS</li><li>다국어 번역</li><li>삽화 모션 애니메이션</li><li>결제 및 수익화</li></ul>
           </article>
           <article class="moscow__card moscow__card--wont">
-            <p class="moscow__head"><b>Won’t Have</b><span>초기 범위 제외</span></p>
+            <p class="moscow__head"><b>Won't Have</b><span>초기 범위 제외</span></p>
             <ul><li>시리즈 동화 생성</li><li>주제 선정 의무화</li><li>관심사 기반 AI 동화 추천</li><li>실물 책 제작 연계</li></ul>
-            <p class="moscow__note">서비스에서 영구히 제외한 것이 아닌, 초기 개발 범위에서 제외한 기능입니다.</p>
           </article>
         </div>
+        <p class="mv__caption rv" style="--d:.24s">* <span class="nocase">MoSCoW</span>는 초기 기획 단계에서 설정한 기능 우선순위이며, 실제 구현 완료 여부와는 구분됩니다. Won't Have는 서비스에서 영구히 제외한 것이 아닌, 초기 개발 범위에서 제외한 기능입니다.</p>
 
       </div>
     </section>
 
-    <!-- PRIORITIZATION & MVP STRATEGY ③ — MVP SCOPE & ROADMAP -->
-    <section class="slide slide--fit slide--mv" id="mvp-scope" data-idx="05" data-title="우선순위·MVP" data-cont>
+    <!-- PRIORITIZATION & MVP STRATEGY ③ — MVP SCOPE -->
+    <section class="slide slide--fit slide--mv" id="mvp-scope" data-idx="05" data-title="우선순위·MVP" data-cont data-step="4">
       <div class="wrap mv">
 
         <header class="mv__head">
           <div class="rv">
             <p class="eyebrow"><span>05</span>Prioritization &amp; MVP Strategy</p>
-            <p class="kicker mv__part"><i>C</i>MVP Scope &amp; Roadmap</p>
-            <h2 class="mv__title">핵심 경험부터 서비스 확장까지</h2>
+            <p class="kicker mv__part">MVP Scope</p>
+            <h2 class="mv__title">핵심 사용자 경험을 우선 구현하다</h2>
           </div>
           <div class="mv__side rv" style="--d:.1s">
-            <p class="mv__sub">기능을 한 번에 구현하기보다, 동화 생성과 독서 경험을 중심으로 우선순위를 정하고 이후 서비스 고도화와 수익화 가능성을 검토했습니다.</p>
+            <p class="mv__sub">사용자 니즈와 기능 우선순위를 바탕으로 동화 생성부터 독서와 독후활동, 저장까지 이어지는 핵심 경험을 MVP의 중심으로 설정했습니다.</p>
             <ol class="mv-flow mv-flow--mini" aria-label="우선순위 설정 과정 중 현재 단계">
-              <li><b>SWOT</b></li><li><b>User Needs</b></li><li><b>MoSCoW</b></li><li class="is-current"><b>MVP Scope</b></li>
+              <li><b>User Needs</b></li><li><b>SWOT</b></li><li><b class="nocase">MoSCoW</b></li><li class="is-current"><b>MVP Scope</b></li>
             </ol>
           </div>
         </header>
 
-        <div class="mv-road rv" style="--d:.18s">
-          <p class="mv-road__label"><span>Initial Planning Priority</span>기획 초기에 설정한 단계별 구현 우선순위</p>
-          <ol class="mv-road__steps">
-            <li class="is-core">
-              <p class="mv-road__no">01<span>Priority 1</span></p>
-              <b>Core MVP</b>
-              <ul><li>AI 동화 생성</li><li>책장 저장</li><li>독후활동</li><li>기본 TTS</li></ul>
-            </li>
-            <li>
-              <p class="mv-road__no">02<span>Priority 2</span></p>
-              <b>Experience Enhancement</b>
-              <ul><li>부모 대시보드</li><li>프로필 관리</li><li>취침 모드</li><li>공유 기능</li></ul>
-            </li>
-            <li>
-              <p class="mv-road__no">03<span>Priority 3</span></p>
-              <b>Revenue Model</b>
-              <ul><li>Free/Premium 기능 구분</li><li>구독 모델 검토</li></ul>
-            </li>
-            <li>
-              <p class="mv-road__no">04<span>Priority 4</span></p>
-              <b>Future Expansion</b>
-              <ul><li>다국어 지원</li><li>삽화 애니메이션</li><li>글로벌 서비스 확장</li></ul>
-            </li>
+        <!-- 핵심 경험 흐름: Must Have 기능을 하나의 경험으로 -->
+        <div class="op-pipe op-pipe--core rv" style="--d:.18s">
+          <p class="kicker">Core Experience</p>
+          <ol class="op-pipe__nodes" aria-label="MVP 핵심 경험 흐름">
+            <li><span class="op-pipe__key">01 · Create</span><b>AI 동화 생성</b><span class="op-pipe__tool">스토리 · 삽화</span></li>
+            <li><span class="op-pipe__key">02 · Read</span><b>독서</b><span class="op-pipe__tool">감상 · TTS 낭독</span></li>
+            <li><span class="op-pipe__key">03 · Activity</span><b>독후활동</b><span class="op-pipe__tool">읽은 이야기와 연계</span></li>
+            <li><span class="op-pipe__key">04 · Save</span><b>책장 저장</b><span class="op-pipe__tool">다시 읽기</span></li>
           </ol>
-          <p class="mv-road__note">* 기획 초기의 기능 분류이며 구현 완료 여부를 뜻하지 않습니다. 실제 구현 범위와 이후 계획은 <a href="#s6">Core Features</a> · <a href="#s12">Roadmap</a>에서 구분해 설명합니다.</p>
+          <p class="mv__caption">* 초기 기획 단계의 핵심 기능 선정 결과입니다. 이후 단계별 계획은 <a href="#s12">Roadmap</a>에서 다룹니다.</p>
         </div>
 
         <div class="mv-msg rv" style="--d:.26s">
           <p class="kicker">Decision</p>
-          <p class="mv-msg__text">핵심 사용자 경험을 먼저 정의하고, <strong>구현 가능성과 서비스 확장성</strong>을 함께 고려해 기능의 우선순위를 설정했습니다.</p>
+          <p class="mv-msg__text">모든 기능을 한 번에 구현하기보다, <strong>서비스의 핵심 가치를 전달하는 경험</strong>을 먼저 정의하고 구현 범위를 구체화했습니다.</p>
         </div>
 
       </div>
     </section>
 
     <!-- 04 해결책 -->
-    <section class="slide" id="s4" data-idx="06" data-title="서비스 소개, 해결책">
+    <section class="slide" id="s4" data-idx="06" data-title="서비스 소개, 해결책" data-step="4">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>06</span>Solution — 서비스 소개, 해결책</p>
@@ -446,7 +450,7 @@
     </section>
 
     <!-- 09 SERVICE CONCEPT -->
-    <section class="slide slide--fit slide--cj" id="concept" data-idx="07" data-title="서비스 컨셉">
+    <section class="slide slide--fit slide--cj" id="concept" data-idx="07" data-title="서비스 컨셉" data-step="5">
       <div class="wrap cj">
 
         <header class="cj__head">
@@ -523,7 +527,7 @@
     </section>
 
     <!-- 10 AGE-BASED PERSONALIZATION — 설계 기준 · 생성 로직 -->
-    <section class="slide slide--fit slide--ag" id="age" data-idx="08" data-title="연령별 개인화">
+    <section class="slide slide--fit slide--ag" id="age" data-idx="08" data-title="연령별 개인화" data-step="5">
       <div class="wrap ag">
 
         <header class="ag__head">
@@ -575,7 +579,7 @@
     </section>
 
     <!-- 11 GENERATION OUTPUT — 연령별 실제 생성 결과 비교 (결과 준비 전: 교체용 자리) -->
-    <section class="slide slide--fit slide--ag" id="output" data-idx="09" data-title="생성 결과 비교">
+    <section class="slide slide--fit slide--ag" id="output" data-idx="09" data-title="생성 결과 비교" data-step="5">
       <div class="wrap go">
 
         <header class="go__head">
@@ -623,7 +627,7 @@
     </section>
 
     <!-- 06 VISUAL DESIGN SYSTEM (기존 NAMING 위치) -->
-    <section class="slide slide--fit slide--vs" id="s5" data-idx="10" data-title="디자인 시스템">
+    <section class="slide slide--fit slide--vs" id="s5" data-idx="10" data-title="디자인 시스템" data-step="5">
       <div class="wrap vs">
 
         <header class="vs__head">
@@ -711,7 +715,7 @@
     </section>
 
     <!-- 06 핵심 기능 -->
-    <section class="slide" id="s6" data-idx="11" data-title="핵심기능(MVP)">
+    <section class="slide" id="s6" data-idx="11" data-title="핵심기능(MVP)" data-step="5">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>11</span>Core Features — 핵심 기능 (MVP)</p>
@@ -739,7 +743,7 @@
     </section>
 
     <!-- 10 주요 화면 ① — Reading Experience: 입력 · 생성 -->
-    <section class="slide slide--fit" id="s7" data-idx="12" data-title="디자인 ①">
+    <section class="slide slide--fit" id="s7" data-idx="12" data-title="디자인 ①" data-step="5">
       <div class="wrap ks">
         <header class="head">
           <p class="eyebrow"><span>12</span>Reading Experience — Input &amp; Create</p>
@@ -764,7 +768,7 @@
     </section>
 
     <!-- 13 CREATE UX DESIGN — INPUT & CREATE의 이미지가 축소·이동하며 이어짐 -->
-    <section class="slide slide--fit slide--ux" id="create-ux" data-idx="13" data-title="디자인 ① UX" data-pair="s7">
+    <section class="slide slide--fit slide--ux" id="create-ux" data-idx="13" data-title="디자인 ① UX" data-pair="s7" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 100 / 80">
@@ -804,7 +808,7 @@
     </section>
 
     <!-- 10 주요 화면 ② — Reading Experience: Story Viewer -->
-    <section class="slide slide--fit slide--rx" id="viewer" data-idx="14" data-title="디자인 ②">
+    <section class="slide slide--fit slide--rx" id="viewer" data-idx="14" data-title="디자인 ②" data-step="5">
       <div class="wrap rx">
 
         <header class="rx__intro rv">
@@ -852,7 +856,7 @@
     </section>
 
     <!-- 12 BEYOND READING — ACTIVITY -->
-    <section class="slide slide--fit" id="activity" data-idx="15" data-title="디자인 ③">
+    <section class="slide slide--fit" id="activity" data-idx="15" data-title="디자인 ③" data-step="5">
       <div class="wrap ks ks--activity">
         <header class="head">
           <p class="eyebrow"><span>15</span>Beyond Reading — Activity</p>
@@ -877,7 +881,7 @@
     </section>
 
     <!-- 17 ACTIVITY UX DESIGN -->
-    <section class="slide slide--fit slide--ux" id="activity-ux" data-idx="16" data-title="디자인 ③ UX" data-pair="activity">
+    <section class="slide slide--fit slide--ux" id="activity-ux" data-idx="16" data-title="디자인 ③ UX" data-pair="activity" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 100 / 78">
@@ -921,7 +925,7 @@
     </section>
 
     <!-- 13 VISUAL SYSTEM — RECORD: Parent Dashboard -->
-    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="17" data-title="디자인 ④">
+    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="17" data-title="디자인 ④" data-step="5">
       <div class="wrap dz">
 
         <header class="dz__intro rv">
@@ -971,7 +975,7 @@
     </section>
 
     <!-- 19 DASHBOARD UX DESIGN -->
-    <section class="slide slide--fit slide--ux slide--ux-alt" id="dashboard-ux" data-idx="18" data-title="디자인 ④ UX" data-pair="dashboard">
+    <section class="slide slide--fit slide--ux slide--ux-alt" id="dashboard-ux" data-idx="18" data-title="디자인 ④ UX" data-pair="dashboard" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 1254 / 1197">
@@ -1013,7 +1017,7 @@
     </section>
 
     <!-- 21 DESIGN REFINEMENT — 생성 대기 화면 개선 -->
-    <section class="slide slide--fit slide--rf" id="refine" data-idx="19" data-title="디자인 개선">
+    <section class="slide slide--fit slide--rf" id="refine" data-idx="19" data-title="디자인 개선" data-step="5">
       <div class="wrap rf">
 
         <header class="rf__head">
@@ -1070,7 +1074,7 @@
     </section>
 
     <!-- 20 DESIGN TO DEVELOPMENT -->
-    <section class="slide slide--fit slide--dd" id="d2d" data-idx="20" data-title="구현 과정">
+    <section class="slide slide--fit slide--dd" id="d2d" data-idx="20" data-title="구현 과정" data-step="5">
       <div class="wrap dd">
 
         <header class="dd__head">
@@ -1116,7 +1120,7 @@
     </section>
 
     <!-- 08 기술 아키텍처 -->
-    <section class="slide" id="s10" data-idx="21" data-title="AI 활용">
+    <section class="slide" id="s10" data-idx="21" data-title="AI 활용" data-step="5">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>21</span>Architecture — 기술 아키텍처</p>
@@ -1157,7 +1161,7 @@
     </section>
 
     <!-- OPERATIONAL CONSIDERATIONS ① — 생성 구조와 비용 발생 지점 -->
-    <section class="slide slide--fit slide--op" id="ops" data-idx="22" data-title="운영 고려">
+    <section class="slide slide--fit slide--op" id="ops" data-idx="22" data-title="운영 고려" data-step="business">
       <div class="wrap op">
 
         <header class="op__head">
@@ -1200,7 +1204,7 @@
     </section>
 
     <!-- OPERATIONAL CONSIDERATIONS ② — 팀 논의 · 기능 구분 -->
-    <section class="slide slide--fit slide--op" id="ops-direction" data-idx="22" data-title="운영 고려" data-cont>
+    <section class="slide slide--fit slide--op" id="ops-direction" data-idx="22" data-title="운영 고려" data-cont data-step="business">
       <div class="wrap op">
 
         <header class="op__head">
@@ -1248,7 +1252,7 @@
     </section>
 
     <!-- 11 BM 구조 -->
-    <section class="slide" id="s11" data-idx="23" data-title="BM 구조">
+    <section class="slide" id="s11" data-idx="23" data-title="BM 구조" data-step="business">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>23</span>Business Model — BM 구조</p>
@@ -1287,7 +1291,7 @@
     </section>
 
     <!-- 12 향후 계획 -->
-    <section class="slide" id="s12" data-idx="24" data-title="향후 계획">
+    <section class="slide" id="s12" data-idx="24" data-title="향후 계획" data-step="business">
       <div class="wrap">
         <header class="head">
           <p class="eyebrow"><span>24</span>Roadmap — 향후 계획</p>
@@ -1315,7 +1319,7 @@
     </section>
 
     <!-- 16 LEARNED -->
-    <section class="slide slide--fit slide--lr" id="learned" data-idx="25" data-title="마무리">
+    <section class="slide slide--fit slide--lr" id="learned" data-idx="25" data-title="마무리" data-step="reflection">
       <div class="wrap lr">
 
         <header class="lr__head">

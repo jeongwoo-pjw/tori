@@ -50,10 +50,28 @@
     if (a.textContent === '디자인') designLink = a;
   });
 
+  // 상단 기획 프로세스: data-step 1~5는 단계 표시, business · reflection은 라벨만, 없으면 기존 각주
+  const $top = document.querySelector('.chrome--top');
+  const processSteps = [...document.querySelectorAll('.process li')];
+  const $processLabel = document.querySelector('.process-label');
+  const STEP_LABELS = { business: 'Business & Future', reflection: 'Reflection' };
+  const setStep = (step) => {
+    const n = Number(step) || 0;
+    $top.classList.toggle('is-process', n > 0);
+    $top.classList.toggle('is-label', step in STEP_LABELS);
+    if (step in STEP_LABELS) $processLabel.textContent = STEP_LABELS[step];
+    processSteps.forEach((li, k) => {
+      li.classList.toggle('is-done', k + 1 < n);
+      li.classList.toggle('is-current', k + 1 === n);
+      if (k + 1 === n) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    });
+  };
+
   let current = 0;
   const setActive = (i) => {
     current = i;
     const s = slides[i];
+    setStep(s.dataset.step || '');
     $idx.textContent = s.dataset.idx || pad(i);
     $title.textContent = s.dataset.title || '';
     // 표지에서는 섹션 각주를 숨김
