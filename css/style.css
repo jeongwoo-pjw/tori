@@ -1848,7 +1848,7 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
    브랜드(가장 작게) · 컬러 / 타이포그래피 · 일러스트 · 컴포넌트 / 디자인 원칙
    컴포넌트 데모는 서비스(tori-story)의 Tailwind 토큰 값을 그대로 옮김
    ========================================================== */
-.slide--vs {
+.slide--vs, .slide--dp {
   /* 서비스 토큰 (oklch → hex) */
   --tc-primary-500: #F997A0;
   --tc-bg-50: #FFFDFB;
@@ -1922,12 +1922,14 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
 .tc-card__icon svg { width: 13px; height: 13px; fill: var(--tc-acc-700); }
 .tc-chip { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--tc-sec-200); background: var(--tc-sec-100); color: var(--tc-fg-700); font-family: var(--tc-ui); font-size: 13px; font-weight: 700; white-space: nowrap; }
 .tc-chip.is-on { border-color: var(--tc-primary-500); background: var(--tc-primary-500); color: var(--tc-fg-950); }
+.tc-chip.is-hover { border-color: oklch(0.88 0.062 10); background: oklch(0.98 0.008 8 / .5); }
 .tc-card__desc { margin-top: 6px; padding-left: 32px; color: var(--tc-fg-700); font-family: var(--tc-body); font-size: 13.5px; }
 .tc-chip--add { border-color: var(--tc-acc-200); background: var(--tc-acc-100); color: #6a4a1e; }
 
 /* 낮은 노트북 화면: 칩 · 컴포넌트 행 간격부터 줄여 100vh 안에 유지 */
 @media (min-width: 1024px) and (max-height: 820px) {
   .vs { row-gap: 12px; }
+  .vs__dt-note { display: none; }
   .vs__title { margin-top: 10px; }
   .vs__identity, .vs__block { padding-top: 10px; }
   .vs__swatches { margin-top: 8px; }
@@ -1948,6 +1950,100 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
 @media (max-width: 767px) {
   .vs__swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vs__demos > div { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* 영역 번호 (01 ~ 04) · 컴포넌트 상태 라벨 · 하단 핵심 문구 */
+.vs .kicker i, .vs__theme-head b i, .dp .kicker i { margin-right: 8px; font-style: normal; color: var(--muted); letter-spacing: .04em; }
+.vs__spec { display: inline-flex; align-items: center; gap: 6px; }
+.vs__spec > i { order: -1; color: var(--muted); font-size: 10.5px; font-style: normal; font-weight: 500; letter-spacing: .04em; white-space: nowrap; }
+.vs__spec .tc-chip.is-on + i { color: var(--accent); font-weight: 600; }
+.vs__row:has(.vs__spec) { column-gap: 14px; }
+.vs__dt-note { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+
+/* ==========================================================
+   DESIGN SYSTEM IN PRACTICE
+   14에서 정의한 규칙이 실제 화면에 쓰인 사례 — 01 · 02는 원리, 03은 화면별 같은 UI 패턴 비교
+   01은 서비스 코드에서 공유가 확인된 요소만, 02는 서비스 index.css의 테마별 토큰 값 그대로
+   ========================================================== */
+.dp { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: clamp(24px, 4.6vh, 60px); }
+.dp__top { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1.04fr) minmax(0, .9fr); gap: clamp(24px, 3vw, 52px); align-items: stretch; }
+.dp__head .vs__desc { margin-top: clamp(10px, 1.8vh, 20px); }
+.dp__head .vs__title { white-space: nowrap; }
+.dp__block, .dp__app { min-width: 0; padding-top: clamp(12px, 2vh, 20px); border-top: 1px solid var(--line-strong); }
+.dp h3 { margin-top: 4px; font-size: clamp(15px, min(1.05vw, 1.9vh), 18px); font-weight: 600; letter-spacing: -.01em; }
+.dp__desc { margin-top: 4px; color: var(--ink-2); font-size: clamp(12.5px, min(.82vw, 1.5vh), 14px); line-height: 1.55; }
+
+/* 01 — 실제 서비스 버튼 4종 (배경 없이 캡처), 2×2 */
+.dp__axis { margin-left: 12px; color: var(--muted); font-size: 10.5px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
+.dp__btns { display: grid; grid-template-columns: repeat(2, max-content); justify-content: start; gap: clamp(10px, 2vh, 22px) clamp(28px, 3vw, 56px); margin-top: clamp(12px, 2.2vh, 22px); }
+.dp__btns li { display: grid; justify-items: start; gap: 6px; }
+.dp__btns span { color: var(--ink-2); font-size: 11.5px; white-space: nowrap; }
+.dp__btns span b { color: var(--ink); font-weight: 600; }
+.dp__btns img { display: block; width: auto; height: clamp(30px, 3.7vh, 40px); }
+
+/* 02 — 같은 컴포넌트 묶음을 4가지 테마 토큰으로: 열 정렬로 구조 동일 · 색만 변경을 비교 */
+.dp__themes { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; gap: clamp(4px, .7vh, 7px) 6px; margin-top: clamp(10px, 1.8vh, 18px); }
+.dp__theme { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: center; padding: 4px 8px 4px 12px; border-radius: 12px; border: 1px solid var(--tc-bg-200); background: var(--tc-bg-50); }
+.dp__theme-name { display: flex; align-items: baseline; gap: 6px; min-width: 0; overflow: hidden; color: var(--muted); font-size: 10px; letter-spacing: .02em; white-space: nowrap; }
+.dp__theme-name b { color: var(--tc-fg-950); font-size: 12px; font-weight: 600; letter-spacing: 0; }
+.dp__theme .tc-chip { padding: 3px 10px; font-size: 11px; }
+.dp__theme .tc-btn { gap: 4px; padding: 4px 11px; font-size: 11px; }
+.dp__theme .tc-btn svg { width: 11px; height: 11px; }
+
+/* 03 — 대표 재사용 UI 패턴: 패턴마다 서로 다른 화면의 실제 부분 캡처 2개 */
+.dp__app { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: clamp(14px, 2.6vh, 28px); min-height: 0; }
+.dp__app-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; }
+.dp__app-head h3 { margin-top: 0; }
+.dp__app-head .dp__desc { flex-basis: 100%; margin-top: 0; }
+.dp__patterns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(24px, 3vw, 56px); min-height: 0; }
+.dp__pattern { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: clamp(8px, 1.4vh, 14px); min-width: 0; min-height: 0; }
+.dp__pattern figcaption { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; color: var(--muted); font-size: 11.5px; }
+.dp__pattern figcaption b { color: var(--ink); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.dp__pattern figcaption span { flex-basis: 100%; }
+.dp__pattern figcaption i { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 9.5px; font-style: normal; font-weight: 600; font-variant-numeric: tabular-nums; }
+/* 패턴마다 하나의 전체 박스 — 안에는 캡처한 컴포넌트만 */
+.dp__board { min-height: 0; padding: clamp(14px, 2.6vh, 32px) clamp(16px, 2vw, 36px); border-radius: 12px; border: 1px solid var(--line); background: #f7f2ec; }
+.dp__board--chips { display: flex; flex-direction: column; justify-content: center; gap: clamp(18px, 4vh, 44px); container-type: inline-size; }
+.dp__chips { display: grid; gap: 10px; min-width: 0; }
+.dp__chips img { display: block; width: calc(var(--w) / 630 * min(100cqw, 440px)); height: auto; }
+.dp__board--cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1vw, 16px); padding: clamp(12px, 2vh, 24px) clamp(12px, 1vw, 18px); }
+.dp__card { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 10px; min-height: 0; }
+.dp__card img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: center bottom; }
+.dp__chips span, .dp__card span { color: var(--muted); font-size: 11px; white-space: nowrap; }
+.dp__card span { white-space: normal; text-align: center; text-wrap: balance; }
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .dp { row-gap: 16px; }
+  .dp__block, .dp__app { padding-top: 10px; }
+  .dp__btns, .dp__themes { margin-top: 8px; }
+  .dp__block .dp__desc { display: none; }
+  .dp__board { padding-block: 12px; }
+  .dp__app-head .dp__desc { display: none; }
+}
+/* 좁은 데스크톱: 제목은 한 줄 전체(14와 같은 2단), 01 · 02는 그 아래 2단 */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .dp__top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); row-gap: clamp(10px, 1.8vh, 20px); }
+  .dp__head { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: end; }
+  .dp__head .vs__desc { margin-top: 0; }
+  .dp__block .dp__desc { display: none; }
+  .dp__app-head .dp__desc, .dp__pattern figcaption span { display: none; }
+  .dp__board--chips { gap: 16px; }
+}
+@media (max-width: 1023px) {
+  .dp__top { grid-template-columns: 1fr; row-gap: 32px; }
+  .dp { row-gap: 40px; }
+  .dp__patterns { grid-template-columns: 1fr; row-gap: 28px; }
+  .dp__pattern { grid-template-rows: none; row-gap: 10px; }
+  .dp__card img { height: clamp(220px, 46vw, 340px); }
+}
+@media (max-width: 767px) {
+  .dp__btns { column-gap: 20px; }
+  .dp__btns img { height: 30px; }
+  .dp__board--cards { gap: 16px; }
+  .dp__card img { height: auto; max-width: 100%; }
+  .dp__board--cards { gap: 10px; padding-inline: 12px; }
+  .dp__card span { white-space: normal; text-align: center; font-size: 10.5px; }
+  .dp__theme-name { flex-direction: column; gap: 0; }
 }
 
 /* ---------- 신규 섹션: 모션 최소화 ---------- */
@@ -2324,4 +2420,17 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
   .cv__arrow { display: none !important; }
   .cv > li > .cv__value { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
   .ag__logic-note { display: block; margin: 4px 0 0; }
+}
+
+/* ==========================================================
+   PDF 출력 — 1920 × 1080, 한 화면 = 한 페이지
+   등장 효과는 beforeprint에서 완료 상태로 고정, 고정 크롬(현재 위치 표시)은 페이지마다 같은 값이 찍히므로 숨김
+   ========================================================== */
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html { scroll-snap-type: none; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .chrome, .to-top { display: none; }
+  .slide { height: 100vh; overflow: hidden; break-after: page; break-inside: avoid; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }

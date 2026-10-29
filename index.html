@@ -40,7 +40,7 @@
       <ol class="chrome__menu"></ol>
     </nav>
     <div class="chrome__progress" aria-hidden="true">
-      <span class="chrome__count"><b class="chrome__cur">00</b> / <span class="chrome__total">30</span></span>
+      <span class="chrome__count"><b class="chrome__cur">00</b> / <span class="chrome__total">31</span></span>
       <span class="chrome__track"><i class="chrome__bar"></i></span>
     </div>
   </footer>
@@ -703,20 +703,20 @@
         <header class="vs__head">
           <div class="rv">
             <p class="eyebrow"><span>14</span>Visual Design System</p>
-            <h2 class="vs__title">아이의 상상력과 부모의 신뢰를<br />연결하는 디자인</h2>
+            <h2 class="vs__title">일관된 규칙으로 연결되는<br />사용자 경험</h2>
           </div>
-          <p class="vs__desc rv" style="--d:.1s">다채로운 컬러와 부드러운 형태로 아이와 부모 모두를 위한 시각적 균형을 설계했습니다.</p>
+          <p class="vs__desc rv" style="--d:.1s">컬러 테마와 타이포그래피, 반복되는 UI 요소의 스타일과 상태를 정의하고, 공통 컴포넌트를 활용해 서비스 전반에 일관된 인터페이스를 적용했습니다.</p>
         </header>
 
         <!-- BRAND IDENTITY: 네이밍 + 컬러 테마 -->
         <section class="vs__identity rv" style="--d:.12s">
           <div class="vs__brand-head">
-            <p class="kicker">Brand Identity</p>
+            <p class="kicker"><i>01</i>Brand Identity</p>
             <h3>TORI — 이야기의 씨앗</h3>
           </div>
           <div class="vs__theme-top">
-            <p class="vs__theme-head"><b>Color Theme System</b>사용자 취향에 따라 변화하는 인터페이스</p>
-            <p class="vs__theme-desc">사용자가 선택한 컬러 테마에 따라 서비스 전반의 주요 UI 요소가 일관되게 변경되도록 설계했습니다.</p>
+            <p class="vs__theme-head"><b><i>02</i>Color Theme System</b>사용자 취향에 따라 변화하는 인터페이스</p>
+            <p class="vs__theme-desc">사용자가 선택한 테마에 따라 주요 인터페이스의 컬러가 일관되게 변경되도록 공통 스타일 규칙을 적용했습니다.</p>
           </div>
           <div class="vs__brand-boxes">
             <div class="vs__brand-box vs__brand-box--icon">
@@ -726,7 +726,7 @@
                 <path d="M32 30c0-10 8-17 20-17 0 10-8 17-20 17z" />
               </svg>
             </div>
-            <p class="vs__brand-box">아이의 상상과 가능성을 키워가는 이야기</p>
+            <p class="vs__brand-box">아이의 상상과 가능성을 키워가는 이야기.</p>
           </div>
           <div class="vs__theme-body">
             <ul class="vs__swatches">
@@ -743,7 +743,7 @@
 
           <!-- TYPOGRAPHY: 기존 그대로 -->
           <section class="vs__block vs__type rv" style="--d:.2s">
-            <p class="kicker">Typography</p>
+            <p class="kicker"><i>03</i>Typography</p>
             <dl class="vs__fonts">
               <div>
                 <dt><b>Display</b>Gowun Batang<span>타이틀 · 헤드라인</span></dt>
@@ -762,18 +762,18 @@
 
           <!-- UI COMPONENTS: 실제 서비스 스타일 -->
           <section class="vs__block vs__comp rv" style="--d:.28s">
-            <p class="kicker">UI Components</p>
+            <p class="kicker"><i>04</i>UI Components</p>
             <dl class="vs__demos">
               <div>
                 <dt><b>Button</b>Primary · Secondary</dt>
-                <dd class="vs__row"><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span><span class="tc-btn tc-btn--secondary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.83 11H20v2H7.83l5.36 5.36-1.41 1.41L4 12l7.78-7.78 1.41 1.41L7.83 11Z"/></svg>홈 화면 돌아가기</span></dd>
+                <dd class="vs__row"><span class="vs__spec"><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span><i>Primary</i></span><span class="vs__spec"><span class="tc-btn tc-btn--secondary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.83 11H20v2H7.83l5.36 5.36-1.41 1.41L4 12l7.78-7.78 1.41 1.41L7.83 11Z"/></svg>홈 화면 돌아가기</span><i>Secondary</i></span></dd>
               </div>
               <div>
-                <dt><b>Selection Chip</b>Selected · Default</dt>
-                <dd class="vs__row"><span class="tc-chip is-on">용기</span><span class="tc-chip">우정</span><span class="tc-chip">모험</span></dd>
+                <dt><b>Selection Chip</b>Default · Hover · Selected</dt>
+                <dd class="vs__row"><span class="vs__spec"><span class="tc-chip">우정</span><i>Default</i></span><span class="vs__spec"><span class="tc-chip is-hover">모험</span><i>Hover</i></span><span class="vs__spec"><span class="tc-chip is-on">용기</span><i>Selected</i></span></dd>
               </div>
               <div>
-                <dt><b>Card</b>Content Grouping</dt>
+                <dt><b>Card</b>Content Grouping<span class="vs__dt-note">관련 입력을 한 단위로</span></dt>
                 <dd><div class="tc-card"><p class="tc-card__head"><span class="tc-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.97 17h1.03v-5h2v5h1.03c.13-1.2.74-2.19 1.73-3.27.11-.12.83-.86.92-.97a6 6 0 1 0-9.35 0c.08.11.81.85.92.97.99 1.08 1.6 2.07 1.73 3.27ZM10 19v1h4v-1h-4Zm-4.42-4.99a8 8 0 1 1 12.84 0C17.8 14.79 16 16.4 16 18v3a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-3c0-1.6-1.8-3.21-2.42-3.99Z"/></svg></span>동화 주제</p><p class="tc-card__desc">원하는 이야기의 주제를 선택해요.</p></div></dd>
               </div>
             </dl>
@@ -781,14 +781,94 @@
 
         </div>
 
+
+      </div>
+    </section>
+
+    <!-- DESIGN SYSTEM IN PRACTICE — 14에서 정의한 규칙이 실제 화면에 적용된 사례 -->
+    <section class="slide slide--fit slide--dp" id="ds-practice" data-idx="15" data-title="디자인 시스템" data-step="5">
+      <div class="wrap dp">
+
+        <div class="dp__top">
+          <header class="dp__head">
+            <div class="rv">
+              <p class="eyebrow"><span>15</span>Design System in Practice</p>
+              <h2 class="vs__title">One System,<br />Multiple Experiences</h2>
+            </div>
+            <p class="vs__desc rv" style="--d:.1s">공통 컴포넌트와 테마 규칙을 실제 서비스 화면에 재사용하여, 기능과 콘텐츠가 달라도 일관된 인터페이스를 경험하도록 설계했습니다.</p>
+          </header>
+
+          <!-- 01 BUTTON VARIANTS: 실제 서비스 화면에서 캡처한 버튼 (create · viewer, 배경 제외) -->
+          <section class="dp__block rv" style="--d:.14s">
+            <p class="kicker"><i>01</i>Button Variants<span class="dp__axis">Hierarchy · Shape · State</span></p>
+            <h3>화면 맥락에 따라 확장되는 버튼 규칙</h3>
+            <p class="dp__desc">공통된 행동 위계와 테마 컬러를 기반으로, 화면의 사용 맥락에 따라 버튼 형태와 상태를 구분해 적용했습니다.</p>
+            <ul class="dp__btns">
+              <li><span><b>Primary</b> · Pill</span><img src="images/btn-primary-pill.png" alt="동화 만들기 버튼 (선택형 만들기)" width="139" height="40" /></li>
+              <li><span><b>Primary</b> · Rounded</span><img src="images/btn-primary-rounded.png" alt="다음 페이지 버튼 (동화 뷰어)" width="128" height="40" /></li>
+              <li><span><b>Secondary</b> · Pill</span><img src="images/btn-secondary-pill.png" alt="홈 화면 돌아가기 버튼 (동화 만들기)" width="160" height="42" /></li>
+              <li><span><b>Disabled</b> · Rounded</span><img src="images/btn-disabled-rounded.png" alt="비활성 상태의 이전 페이지 버튼 (동화 뷰어 첫 페이지)" width="130" height="42" /></li>
+            </ul>
+          </section>
+
+          <!-- 02 THEME CONSISTENCY: 서비스 index.css의 테마별 라이트 모드 토큰 값 그대로 -->
+          <section class="dp__block rv" style="--d:.2s">
+            <p class="kicker"><i>02</i>Theme Consistency</p>
+            <h3>테마가 달라도 유지되는 UI 규칙</h3>
+            <p class="dp__desc">4가지 컬러 테마에 공통 스타일 규칙을 적용하여, 테마 변경 시에도 컴포넌트의 구조와 사용 방식이 유지되도록 설계했습니다.</p>
+            <ul class="dp__themes">
+              <li class="dp__theme" style="--tc-bg-50: oklch(0.995 0.003 60); --tc-bg-200: oklch(0.97 0.012 50); --tc-primary-500: oklch(0.78 0.118 14); --tc-sec-100: oklch(0.97 0.012 55); --tc-sec-200: oklch(0.95 0.025 50); --tc-fg-700: oklch(0.32 0.055 270); --tc-fg-950: oklch(0.15 0.05 268)">
+                <p class="dp__theme-name"><b>핑크베리</b>Pinkberry</p><span class="tc-chip">우정</span><span class="tc-chip is-on">용기</span><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span>
+              </li>
+              <li class="dp__theme" style="--tc-bg-50: oklch(0.99 0.004 188); --tc-bg-200: oklch(0.965 0.013 188); --tc-primary-500: oklch(0.79 0.082 188); --tc-sec-100: oklch(0.97 0.012 262); --tc-sec-200: oklch(0.95 0.022 262); --tc-fg-700: oklch(0.32 0.064 262); --tc-fg-950: oklch(0.16 0.066 262)">
+                <p class="dp__theme-name"><b>새벽민트</b>Dawn Mint</p><span class="tc-chip">우정</span><span class="tc-chip is-on">용기</span><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span>
+              </li>
+              <li class="dp__theme" style="--tc-bg-50: oklch(0.99 0.003 80); --tc-bg-200: oklch(0.965 0.020 80); --tc-primary-500: oklch(0.84 0.100 80); --tc-sec-100: oklch(0.95 0.026 264); --tc-sec-200: oklch(0.90 0.046 264); --tc-fg-700: oklch(0.32 0.064 262); --tc-fg-950: oklch(0.14 0.066 262)">
+                <p class="dp__theme-name"><b>황금노을</b>Golden Sunset</p><span class="tc-chip">우정</span><span class="tc-chip is-on">용기</span><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span>
+              </li>
+              <li class="dp__theme" style="--tc-bg-50: oklch(0.99 0.003 288); --tc-bg-200: oklch(0.965 0.015 268); --tc-primary-500: oklch(0.79 0.100 268); --tc-sec-100: oklch(0.97 0.010 288); --tc-sec-200: oklch(0.95 0.018 288); --tc-fg-700: oklch(0.32 0.086 265); --tc-fg-950: oklch(0.17 0.088 265)">
+                <p class="dp__theme-name"><b>달빛별</b>Moonlight Star</p><span class="tc-chip">우정</span><span class="tc-chip is-on">용기</span><span class="tc-btn tc-btn--primary">동화 만들기<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.17 13H4v-2h12.17l-5.36-5.36 1.41-1.41L20 12l-7.78 7.78-1.41-1.41L16.17 13Z"/></svg></span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- 03 SCREEN APPLICATION: 메인 비주얼 — 실제 서비스 화면 3개, 같은 높이 -->
+        <section class="dp__app rv" style="--d:.28s">
+          <div class="dp__app-head">
+            <p class="kicker"><i>03</i>Screen Application</p>
+            <h3>서비스 전반으로 확장된 디자인 시스템</h3>
+            <p class="dp__desc">동화 생성부터 독서와 기록까지, 서로 다른 기능의 화면에서도 공통 디자인 원칙과 UI 패턴을 적용했습니다.</p>
+          </div>
+          <!-- 대표 UI 패턴: 실제 서비스에서 캡처한 컴포넌트만 (화면 배경 · 개별 박스 제외) -->
+          <div class="dp__patterns">
+            <figure class="dp__pattern">
+              <figcaption><i>01</i><b>Selection Chip</b><span>같은 선택 상태 스타일 (Default · Selected)</span></figcaption>
+              <div class="dp__board dp__board--chips">
+                <div class="dp__chips"><span>Create · 선택형 만들기</span><img src="images/chips-select.png" alt="선택형 만들기의 동화 주제 칩 — 용기 · 가족 선택" width="603" height="30" style="--w: 603" /></div>
+                <div class="dp__chips"><span>Create · 대화형 만들기</span><img src="images/chips-chat.png" alt="대화형 만들기의 이야기 분위기 칩 — 우정과 나눔 · 가족 사랑 선택" width="630" height="38" style="--w: 630" /></div>
+              </div>
+            </figure>
+            <figure class="dp__pattern">
+              <figcaption><i>02</i><b>Content Card</b><span>공통 카드 디자인 원칙 — 라운드 · 테두리와 배경 · 이미지 · 텍스트 · 액션을 한 단위로</span></figcaption>
+              <div class="dp__board dp__board--cards">
+                <div class="dp__card"><img src="images/card-bookshelf.png" alt="책장의 저장된 동화 카드 — 표지, 제목, 마지막으로 읽은 날, 이어 읽기" width="330" height="361" /><span>Record · 책장 — 저장된 동화</span></div>
+                <div class="dp__card"><img src="images/card-report.png" alt="놀이마당의 동화 카드 (활동 전) — 민준이의 용기있는 한복 여행, 퀴즈 놀이터 입장" width="326" height="367" /><span>Activity · 독후활동 — 놀이마당(활동 전)</span></div>
+                <div class="dp__card"><img src="images/card-report-done.png" alt="놀이마당의 동화 카드 (활동 후) — 4/4 완료, 모두 완료" width="326" height="391" /><span>Activity · 독후활동 — 놀이마당(활동 후)</span></div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+
       </div>
     </section>
 
     <!-- 10 주요 화면 ① — Reading Experience: 입력 · 생성 -->
-    <section class="slide slide--fit" id="s7" data-idx="15" data-title="디자인 ①" data-step="5">
+    <section class="slide slide--fit" id="s7" data-idx="16" data-title="디자인 ①" data-step="5">
       <div class="wrap ks">
         <header class="head">
-          <p class="eyebrow"><span>15</span>Reading Experience — Input &amp; Create</p>
+          <p class="eyebrow"><span>16</span>Reading Experience — Input &amp; Create</p>
           <h2 class="title">이름·주제·소재를 고르면 완성되는 동화</h2>
           <p class="sub">선택형·대화형 입력으로 맞춤 동화 생성</p>
         </header>
@@ -810,7 +890,7 @@
     </section>
 
     <!-- 13 CREATE UX DESIGN — INPUT & CREATE의 이미지가 축소·이동하며 이어짐 -->
-    <section class="slide slide--fit slide--ux" id="create-ux" data-idx="16" data-title="디자인 ① UX" data-pair="s7" data-step="5">
+    <section class="slide slide--fit slide--ux" id="create-ux" data-idx="17" data-title="디자인 ① UX" data-pair="s7" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 100 / 80">
@@ -825,7 +905,7 @@
           </div>
         </div>
         <div class="ux__text">
-          <p class="eyebrow ux-in"><span>16</span>Create UX Design</p>
+          <p class="eyebrow ux-in"><span>17</span>Create UX Design</p>
           <h2 class="ux__title ux-in" style="--d:.06s">사용자 목적에 따른<br />두 가지 동화 생성 방식</h2>
           <p class="ux__sub ux-in" style="--d:.12s">빠른 생성을 원하는 사용자와 이야기를 구체화하고 싶은 사용자를 고려해 입력 방식을 구분했습니다.</p>
           <ol class="ux__points">
@@ -850,11 +930,11 @@
     </section>
 
     <!-- 10 주요 화면 ② — Reading Experience: Story Viewer -->
-    <section class="slide slide--fit slide--rx" id="viewer" data-idx="17" data-title="디자인 ②" data-step="5">
+    <section class="slide slide--fit slide--rx" id="viewer" data-idx="18" data-title="디자인 ②" data-step="5">
       <div class="wrap rx">
 
         <header class="rx__intro rv">
-          <p class="eyebrow"><span>17</span>Reading UX Design</p>
+          <p class="eyebrow"><span>18</span>Reading UX Design</p>
           <h2 class="rx__title">아이의 시선이<br />이야기에 머물 수 있도록</h2>
           <p class="rx__desc">읽기 화면의 정보와 기능 최적화</p>
         </header>
@@ -898,10 +978,10 @@
     </section>
 
     <!-- 12 BEYOND READING — ACTIVITY -->
-    <section class="slide slide--fit" id="activity" data-idx="18" data-title="디자인 ③" data-step="5">
+    <section class="slide slide--fit" id="activity" data-idx="19" data-title="디자인 ③" data-step="5">
       <div class="wrap ks ks--activity">
         <header class="head">
-          <p class="eyebrow"><span>18</span>Beyond Reading — Activity</p>
+          <p class="eyebrow"><span>19</span>Beyond Reading — Activity</p>
           <h2 class="title">배움을 잇다, 읽은 뒤엔 놀이로</h2>
           <p class="sub">AI가 자동생성한 다양한 독후활동 놀이</p>
         </header>
@@ -923,7 +1003,7 @@
     </section>
 
     <!-- 17 ACTIVITY UX DESIGN -->
-    <section class="slide slide--fit slide--ux" id="activity-ux" data-idx="19" data-title="디자인 ③ UX" data-pair="activity" data-step="5">
+    <section class="slide slide--fit slide--ux" id="activity-ux" data-idx="20" data-title="디자인 ③ UX" data-pair="activity" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 100 / 78">
@@ -938,7 +1018,7 @@
           </div>
         </div>
         <div class="ux__text">
-          <p class="eyebrow ux-in"><span>19</span>Activity UX Design</p>
+          <p class="eyebrow ux-in"><span>20</span>Activity UX Design</p>
           <h2 class="ux__title ux-in" style="--d:.06s">읽기에서 표현으로 이어지는<br />독후활동 경험</h2>
           <p class="ux__sub ux-in" style="--d:.12s">동화의 내용과 아이의 연령을 고려해 질문과 활동 형식을 달리하고, 읽은 이야기를 직접 생각하고 표현하도록 구성했습니다.</p>
           <ol class="ux__points">
@@ -967,11 +1047,11 @@
     </section>
 
     <!-- 13 VISUAL SYSTEM — RECORD: Parent Dashboard -->
-    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="20" data-title="디자인 ④" data-step="5">
+    <section class="slide slide--fit slide--dz" id="dashboard" data-idx="21" data-title="디자인 ④" data-step="5">
       <div class="wrap dz">
 
         <header class="dz__intro rv">
-          <p class="eyebrow"><span>20</span>Visual System — Record</p>
+          <p class="eyebrow"><span>21</span>Visual System — Record</p>
           <h2 class="dz__title">아이의 독서 경험을<br />한눈에 들어오는 정보로</h2>
           <p class="dz__desc">생성·활동 데이터 시각적 구성</p>
         </header>
@@ -1017,7 +1097,7 @@
     </section>
 
     <!-- 19 DASHBOARD UX DESIGN -->
-    <section class="slide slide--fit slide--ux slide--ux-alt" id="dashboard-ux" data-idx="21" data-title="디자인 ④ UX" data-pair="dashboard" data-step="5">
+    <section class="slide slide--fit slide--ux slide--ux-alt" id="dashboard-ux" data-idx="22" data-title="디자인 ④ UX" data-pair="dashboard" data-step="5">
       <div class="wrap ux">
         <div class="ux__stage">
           <div class="ux__canvas" style="--ar: 1254 / 1197">
@@ -1039,7 +1119,7 @@
           </div>
         </div>
         <div class="ux__text">
-          <p class="eyebrow ux-in"><span>21</span>Dashboard UX Design</p>
+          <p class="eyebrow ux-in"><span>22</span>Dashboard UX Design</p>
           <h2 class="ux__title ux-in" style="--d:.06s">정보 우선순위에 따른<br />부모 대시보드 설계</h2>
           <p class="ux__sub ux-in" style="--d:.12s">부모가 아이의 성장 정보와 독서 활동을 구분해 확인할 수 있도록 정보의 중요도에 따라 화면 위계를 구성했습니다.</p>
           <ol class="ux__points ux__points--tier">
@@ -1059,12 +1139,12 @@
     </section>
 
     <!-- 21 DESIGN REFINEMENT — 생성 대기 화면 개선 -->
-    <section class="slide slide--fit slide--rf" id="refine" data-idx="22" data-title="디자인 개선" data-step="5">
+    <section class="slide slide--fit slide--rf" id="refine" data-idx="23" data-title="디자인 개선" data-step="5">
       <div class="wrap rf">
 
         <header class="rf__head">
           <div class="rv">
-            <p class="eyebrow"><span>22</span>Design Refinement</p>
+            <p class="eyebrow"><span>23</span>Design Refinement</p>
             <h2 class="rf__title">기다림의 불확실성을<br />줄이는 경험</h2>
           </div>
           <p class="rf__sub rv" style="--d:.1s">AI 스토리와 삽화 생성에 시간이 소요되는 기술적 제약을 발견하고, 사용자가 생성 과정을 이해할 수 있도록 상태 피드백 방식을 개선했습니다.</p>
@@ -1116,12 +1196,12 @@
     </section>
 
     <!-- 20 DESIGN TO DEVELOPMENT -->
-    <section class="slide slide--fit slide--dd" id="d2d" data-idx="23" data-title="구현 과정" data-step="5">
+    <section class="slide slide--fit slide--dd" id="d2d" data-idx="24" data-title="구현 과정" data-step="5">
       <div class="wrap dd">
 
         <header class="dd__head">
           <div class="rv">
-            <p class="eyebrow"><span>23</span>Design to Development</p>
+            <p class="eyebrow"><span>24</span>Design to Development</p>
             <h2 class="dd__title">AI를 활용해 디자인을<br />실제 서비스로 연결하다</h2>
           </div>
           <p class="dd__sub rv" style="--d:.1s">연령별 동화·독후활동 생성 조건과 프롬프트를 설계하고, AI 생성 코드를 활용한 기능 연결과 결과 확인을 통해 실제 서비스 구현에 참여했습니다.</p>
@@ -1162,10 +1242,10 @@
     </section>
 
     <!-- 08 기술 아키텍처 -->
-    <section class="slide" id="s10" data-idx="24" data-title="AI 활용" data-step="5">
+    <section class="slide" id="s10" data-idx="25" data-title="AI 활용" data-step="5">
       <div class="wrap">
         <header class="head">
-          <p class="eyebrow"><span>24</span>Architecture</p>
+          <p class="eyebrow"><span>25</span>Architecture</p>
           <h2 class="title">한국어에 특화된 AI 스택</h2>
           <p class="sub">Frontend · AI · Infrastructure</p>
         </header>
@@ -1203,12 +1283,12 @@
     </section>
 
     <!-- OPERATIONAL CONSIDERATIONS ① — 생성 구조와 비용 발생 지점 -->
-    <section class="slide slide--fit slide--op" id="ops" data-idx="25" data-title="운영 고려" data-step="6">
+    <section class="slide slide--fit slide--op" id="ops" data-idx="26" data-title="운영 고려" data-step="6">
       <div class="wrap op">
 
         <header class="op__head">
           <div class="rv">
-            <p class="eyebrow"><span>25</span>Operational Considerations</p>
+            <p class="eyebrow"><span>26</span>Operational Considerations</p>
             <h2 class="op__title">기능 구현을 넘어,<br />운영 가능성까지</h2>
           </div>
           <p class="op__sub rv" style="--d:.1s">AI 기반 서비스의 생성 구조를 검토하며 API 호출에 따른 반복 비용을 확인했고, 지속 가능한 운영을 위해 수익화 방향을 팀원들과 논의했습니다.</p>
@@ -1246,12 +1326,12 @@
     </section>
 
     <!-- OPERATIONAL CONSIDERATIONS ② — 팀 논의 · 기능 구분 -->
-    <section class="slide slide--fit slide--op" id="ops-direction" data-idx="26" data-title="운영 고려" data-step="6">
+    <section class="slide slide--fit slide--op" id="ops-direction" data-idx="27" data-title="운영 고려" data-step="6">
       <div class="wrap op">
 
         <header class="op__head">
           <div class="rv">
-            <p class="eyebrow"><span>26</span>Operational Considerations</p>
+            <p class="eyebrow"><span>27</span>Operational Considerations</p>
             <p class="kicker mv__part"><i>B</i>Team Discussion</p>
             <h2 class="op__title">비용 구조를 고려한<br />서비스 운영 방향 논의</h2>
           </div>
@@ -1294,10 +1374,10 @@
     </section>
 
     <!-- 11 BM 구조 -->
-    <section class="slide" id="s11" data-idx="27" data-title="BM 구조" data-step="6">
+    <section class="slide" id="s11" data-idx="28" data-title="BM 구조" data-step="6">
       <div class="wrap">
         <header class="head">
-          <p class="eyebrow"><span>27</span>Business Model</p>
+          <p class="eyebrow"><span>28</span>Business Model</p>
           <h2 class="title">프리미엄 구독 모델</h2>
           <p class="sub">필요한 만큼, 더 깊게</p>
         </header>
@@ -1333,10 +1413,10 @@
     </section>
 
     <!-- 12 향후 계획 -->
-    <section class="slide" id="s12" data-idx="28" data-title="향후 계획" data-step="6">
+    <section class="slide" id="s12" data-idx="29" data-title="향후 계획" data-step="6">
       <div class="wrap">
         <header class="head">
-          <p class="eyebrow"><span>28</span>Roadmap</p>
+          <p class="eyebrow"><span>29</span>Roadmap</p>
           <h2 class="title">단기 고도화에서 글로벌 확장까지</h2>
           <p class="sub">1차 MVP 이후 로드맵</p>
         </header>
@@ -1361,12 +1441,12 @@
     </section>
 
     <!-- 16 LEARNED -->
-    <section class="slide slide--fit slide--lr" id="learned" data-idx="29" data-title="마무리" data-step="reflection">
+    <section class="slide slide--fit slide--lr" id="learned" data-idx="30" data-title="마무리" data-step="reflection">
       <div class="wrap lr">
 
         <header class="lr__head">
           <div class="rv">
-            <p class="eyebrow"><span>29</span>Learned</p>
+            <p class="eyebrow"><span>30</span>Learned</p>
             <p class="kicker lr__small">What I learned</p>
             <h2 class="lr__title">디자인에서 끝내지 않고,<br />실제로 작동하는 서비스까지</h2>
           </div>
@@ -1414,7 +1494,7 @@
     </section>
 
     <!-- 14 THANK YOU -->
-    <section class="slide slide--end is-dark" id="s14" data-idx="30" data-title="끝">
+    <section class="slide slide--end is-dark" id="s14" data-idx="31" data-title="끝">
       <div class="wrap end">
         <p class="end__eyebrow">상상이 이야기가 되는 곳</p>
         <h2 class="end__title">Thank you</h2>

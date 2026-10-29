@@ -36,7 +36,7 @@
 
 ```
 .
-├── index.html        # 전체 페이지 (31개 화면, 표지 00 ~ 끝 30)
+├── index.html        # 전체 페이지 (32개 화면, 표지 00 ~ 끝 31)
 ├── css/style.css     # 디자인 시스템 · 섹션별 스타일 · 반응형
 ├── js/main.js        # 페이지 번호 자동 정렬 · 내비게이션 · 프로세스 인디케이터 · 등장 효과 · 쇼케이스→상세 전환 · 히어로 아치 배치
 ├── images/           # 사이트에서 사용하는 이미지 (영문 파일명)
@@ -64,23 +64,24 @@
 | 11 | Core Features | 05 Design & Build | 동화 생성 · 놀이마당 · 부모 대시보드 |
 | 12 | Age-based Personalization | 05 Design & Build | 연령별 3단계 생성 규칙, Generation Logic |
 | 13 | Generation Output | 05 Design & Build | 연령별 이해력 활동 결과 3단 비교 |
-| 14 | Visual Design System | 05 Design & Build | Brand Identity · Typography · UI Components |
-| 15 | Reading Experience — Input & Create | 05 Design & Build | 선택형 · 대화형 입력, 생성 중 화면 (쇼케이스) |
-| 16 | Create UX Design | 05 Design & Build | 쇼케이스 이미지가 축소·이동하며 3가지 설계 포인트 |
-| 17 | Reading UX Design | 05 Design & Build | Story Viewer + 이미지 내 콜아웃, 구현 기능 표기 |
-| 18 | Beyond Reading — Activity | 05 Design & Build | 독후활동 4종 탭 · 참여형 활동 · 리워드 게임 (쇼케이스) |
-| 19 | Activity UX Design | 05 Design & Build | 서비스 화면 탭과 생성 로직 범주 구분 |
-| 20 | Visual System — Record | 05 Design & Build | Parent Dashboard와 정보 위계 (쇼케이스) |
-| 21 | Dashboard UX Design | 05 Design & Build | PRIMARY / SECONDARY 영역 하이라이트 |
-| 22 | Design Refinement | 05 Design & Build | Constraint → Problem → Decision, 생성 대기 화면 BEFORE / AFTER |
-| 23 | Design to Development | 05 Design & Build | 4단계 프로세스, 개인 구현 참여 범위 |
-| 24 | Architecture | 05 Design & Build | 팀 기술 구성, 생성 파이프라인 |
-| 25 | Operational Considerations ① | 06 Operate & Future | 생성 흐름과 API 비용 발생 지점, 운영 제약 |
-| 26 | Operational Considerations ② | 06 Operate & Future | Issue → Discussion → Direction, Free / Premium 기능 구분 |
-| 27 | Business Model | 06 Operate & Future | Free / Premium 구독 모델, 기획 · 구현 · 향후 구분 |
-| 28 | Roadmap | 06 Operate & Future | 1차 MVP → 단기 고도화 → 글로벌 확장 |
-| 29 | Learned | Reflection | 3가지 배움, 직접 경험한 범위, 기여도 |
-| 30 | Thank you | — | Role · Contribution · Output, 서비스 링크 |
+| 14 | Visual Design System | 05 Design & Build | Brand Identity · Color Theme · Typography · UI Components (상태 라벨 · Default · Hover · Selected 칩) |
+| 15 | Design System in Practice | 05 Design & Build | Button Variants · Theme Consistency · Screen Application (Selection Chip · Content Card 비교) |
+| 16 | Reading Experience — Input & Create | 05 Design & Build | 선택형 · 대화형 입력, 생성 중 화면 (쇼케이스) |
+| 17 | Create UX Design | 05 Design & Build | 쇼케이스 이미지가 축소·이동하며 3가지 설계 포인트 |
+| 18 | Reading UX Design | 05 Design & Build | Story Viewer + 이미지 내 콜아웃, 구현 기능 표기 |
+| 19 | Beyond Reading — Activity | 05 Design & Build | 독후활동 4종 탭 · 참여형 활동 · 리워드 게임 (쇼케이스) |
+| 20 | Activity UX Design | 05 Design & Build | 서비스 화면 탭과 생성 로직 범주 구분 |
+| 21 | Visual System — Record | 05 Design & Build | Parent Dashboard와 정보 위계 (쇼케이스) |
+| 22 | Dashboard UX Design | 05 Design & Build | PRIMARY / SECONDARY 영역 하이라이트 |
+| 23 | Design Refinement | 05 Design & Build | Constraint → Problem → Decision, 생성 대기 화면 BEFORE / AFTER |
+| 24 | Design to Development | 05 Design & Build | 4단계 프로세스, 개인 구현 참여 범위 |
+| 25 | Architecture | 05 Design & Build | 팀 기술 구성, 생성 파이프라인 |
+| 26 | Operational Considerations ① | 06 Operate & Future | 생성 흐름과 API 비용 발생 지점, 운영 제약 |
+| 27 | Operational Considerations ② | 06 Operate & Future | Issue → Discussion → Direction, Free / Premium 기능 구분 |
+| 28 | Business Model | 06 Operate & Future | Free / Premium 구독 모델, 기획 · 구현 · 향후 구분 |
+| 29 | Roadmap | 06 Operate & Future | 1차 MVP → 단기 고도화 → 글로벌 확장 |
+| 30 | Learned | Reflection | 3가지 배움, 직접 경험한 범위, 기여도 |
+| 31 | Thank you | — | Role · Contribution · Output, 서비스 링크 |
 
 ### 프로세스 인디케이터
 
@@ -93,7 +94,7 @@
 
 ### 쇼케이스 → UX 상세 전환
 
-- 쇼케이스 페이지(15 · 18 · 20)는 이미지를 크게 보여주고, 바로 다음 UX 상세 페이지에서 같은 이미지가 축소·이동하며 설계 의도가 나타납니다.
+- 쇼케이스 페이지(16 · 19 · 21)는 이미지를 크게 보여주고, 바로 다음 UX 상세 페이지에서 같은 이미지가 축소·이동하며 설계 의도가 나타납니다.
 - 상세 페이지의 이미지를 쇼케이스 이미지 위치에서 출발시켜 스크롤 진행도에 맞춰 제자리로 옮기는 FLIP 방식이라, 하나의 이미지가 움직이는 것처럼 보입니다. 원본은 전환 중에만 숨깁니다.
 - 설명은 전환 후반부에 순서대로, 콜아웃은 이미지가 자리 잡은 뒤 나타나고, 역방향 스크롤 시 다시 사라집니다.
 - 스크롤 스냅이 켜지는 데스크톱(1024px · 700px 이상)에서만 동작하고, 태블릿 · 모바일 · 모션 최소화 설정에서는 완성 상태를 바로 보여줍니다.
@@ -281,3 +282,21 @@ python -m http.server 5500 --bind 127.0.0.1
 **검수**
 - 헤드리스 Chrome으로 1280×720 ~ 1920×1080, 태블릿 · 모바일 너비에서 화면 넘침 · 가로 스크롤 · 인디케이터 글자 잘림을 수치로 확인
 - 1366×768 이상에서 수정 페이지 모두 한 화면 안에 표시, 1280×720의 일부 겹침(Persona · Dashboard 등)은 기존부터 있던 값
+
+### 2026-10-29
+
+**Visual Design System 강화 · Design System in Practice 추가**
+- 14 Visual Design System: 메인 카피를 "일관된 규칙으로 연결되는 사용자 경험"으로 변경, 영역 번호(01~04), 버튼 Primary · Secondary와 선택 칩 Default · Hover · Selected 상태 라벨(컴포넌트 왼쪽)
+  - Hover는 서비스 주제 칩의 실제 hover 스타일(`hover:border-primary-300 hover:bg-primary-50/50`), 구현되지 않은 Loading 등은 넣지 않음
+- 15 Design System in Practice(신규, "One System, Multiple Experiences"): 14에서 정의한 규칙이 어디에 쓰였는지 보여주는 페이지
+  - 01 Button Variants: 실제 서비스 버튼 4종(Primary · Pill 동화 만들기 / Primary · Rounded 다음 페이지 / Secondary · Pill 홈 화면 돌아가기 / Disabled · Rounded 이전 페이지)을 2×2로
+  - 02 Theme Consistency: 서비스 `index.css`의 테마별(`theme-pinkberry` · `theme-dawnmint` · `theme-goldendusk` · `theme-moonstar`) 라이트 모드 토큰 값을 그대로 적용한 같은 칩 · 버튼 묶음
+  - 03 Screen Application: Selection Chip(선택형 · 대화형) · Content Card(책장 · 놀이마당 활동 전 · 활동 후) 5:5 비교 — 카드는 코드 재사용이 아닌 공통 카드 디자인 원칙으로 설명
+  - 버튼 · 칩 · 카드 이미지는 서비스를 로컬에서 띄워 샘플 동화 데이터(`dummyBooks.json`)로 해당 요소만 배경 없이 캡처 (`images/btn-*` · `chips-*` · `card-*.png`)
+  - 서비스에는 공통 Button · Chip · Card 컴포넌트 파일이 없고 Tailwind 클래스로 페이지마다 작성되어 있어, 같은 파일 안에서 공유가 확인된 경우만 "재사용", 나머지는 "공통 스타일 패턴"으로 구분
+- 이후 페이지 번호 +1 (JS 자동 정렬, HTML의 `data-idx` · 아이브로우 번호도 함께 갱신)
+
+**PDF 출력**
+- `@media print`: 1920×1080 페이지, 한 화면 = 한 페이지, 고정 크롬 숨김, 전환 효과 없음
+- `beforeprint`에서 등장 효과와 쇼케이스 전환을 완료 상태로 고정
+

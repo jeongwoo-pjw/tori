@@ -235,4 +235,10 @@
   flightMQ.addEventListener('change', requestFlight);
   reduceMotion.addEventListener('change', requestFlight);
   updateFlight();
+
+  // PDF 출력: 등장 효과 · 쇼케이스 전환을 완료 상태로 고정해 모든 내용 표시 (한 화면 = 한 페이지)
+  window.addEventListener('beforeprint', () => {
+    targets.forEach((el) => el.classList.add('is-in'));
+    pairs.forEach((pr) => { land(pr); pr.detail.classList.add('is-on', 'is-settled'); });
+  });
 })();
