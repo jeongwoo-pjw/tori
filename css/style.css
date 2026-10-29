@@ -2007,10 +2007,10 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
 .dp__chips { display: grid; gap: 10px; min-width: 0; }
 .dp__chips img { display: block; width: calc(var(--w) / 630 * min(100cqw, 440px)); height: auto; }
 .dp__board--cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1vw, 16px); padding: clamp(12px, 2vh, 24px) clamp(12px, 1vw, 18px); }
-.dp__card { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 10px; min-height: 0; }
-.dp__card img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: center bottom; }
+/* 세 카드를 같은 배율로: 가장 긴 카드(활동 후 326×391)가 들어가는 폭에 모두 맞춤 */
+.dp__card { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 10px; min-height: 0; container-type: size; }
+.dp__card img { display: block; align-self: end; width: min(100cqw, (100cqh - 28px) * 326 / 391); height: auto; }
 .dp__chips span, .dp__card span { color: var(--muted); font-size: 11px; white-space: nowrap; }
-.dp__card span { white-space: normal; text-align: center; text-wrap: balance; }
 
 @media (min-width: 1024px) and (max-height: 820px) {
   .dp { row-gap: 16px; }
@@ -2034,7 +2034,8 @@ img.screen { object-fit: cover; object-position: top center; border: 1px solid v
   .dp { row-gap: 40px; }
   .dp__patterns { grid-template-columns: 1fr; row-gap: 28px; }
   .dp__pattern { grid-template-rows: none; row-gap: 10px; }
-  .dp__card img { height: clamp(220px, 46vw, 340px); }
+  .dp__card { container-type: normal; }
+  .dp__card img { width: 100%; }
 }
 @media (max-width: 767px) {
   .dp__btns { column-gap: 20px; }
